@@ -1,0 +1,225 @@
+﻿<Page
+    x:Class="FooEditor.UWP.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FooEditor.UWP"
+    xmlns:view="using:FooEditor.UWP.Views"
+    xmlns:vm="using:FooEditor.UWP.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:foo="using:FooEditEngine.UWP"
+    xmlns:prism="using:Prism.Windows.Mvvm"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Name="MainWindow"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary Source="MainPageStyles.xaml" />
+    </Page.Resources>
+    <SplitView
+        IsPaneOpen="{Binding IsOutLineOpen,Mode=TwoWay}"
+        Name="RootPanel">
+        <SplitView.Pane>
+            <view:OutlineView/>
+        </SplitView.Pane>
+        <Grid AllowDrop="True" DragOver="Grid_DragOver" Drop="Grid_Drop">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <CommandBar Grid.Row="0" Name="CommandBar">
+                <AppBarButton Icon="Add" Command="{Binding AddDocumentCommand}" x:Uid="AddButton"/>
+                <AppBarButton Icon="OpenFile" x:Uid="OpenButton">
+                    <AppBarButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem x:Uid="OpenLocalButton" Command="{Binding OpenFileCommand}"/>
+                            <MenuFlyoutItem x:Uid="OpenFromMRU" Click="OpenFromMRU_Click" />
+                            <MenuFlyoutItem x:Uid="OpenAsEncodeButton" Click="OpenAsEncodeButton_Click"/>
+                        </MenuFlyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+                <AppBarButton Icon="Save" x:Uid="SaveButton">
+                    <AppBarButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem x:Uid="SaveLocalButton" Command="{Binding SaveCommand}"/>
+                            <MenuFlyoutItem x:Uid="SaveAsButton" Command="{Binding SaveAsCommand}"/>
+                            <MenuFlyoutItem x:Uid="SaveAsEncodeButton" Click="SaveAsEncodeButton_Click"/>
+                        </MenuFlyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+                <AppBarButton Icon="Undo" Command="{Binding UndoCommand}" x:Uid="UndoButton"/>
+                <AppBarButton Icon="Redo" Command="{Binding RedoCommand}" x:Uid="RedoButton"/>
+                <AppBarButton Icon="Find" AllowFocusOnInteraction="True" Name="FindButton" x:Uid="SearchButton" Click="FindButton_Click">
+                    <AppBarButton.Flyout>
+                        <Flyout Closed="Flyout_Closed">
+                            <StackPanel Margin="20" x:Load="False" x:Name="FindUI">
+                                <TextBlock x:Uid="FindPatternLabel" Margin="0,10,0,0"/>
+                                <TextBox Text="{Binding FindPattern,Mode=TwoWay}" Margin="0,10,0,0" x:Uid="FindPatternTextBox"/>
+                                <TextBlock x:Uid="ReplacePattern" Margin="0,10,0,0"/>
+                                <TextBox Text="{Binding ReplacePattern,Mode=TwoWay}" Margin="0,10,0,0" x:Uid="ReplacePatternTextBox"/>
+                                <StackPanel Margin="0,10,0,0">
+                                    <CheckBox IsChecked="{Binding UseRegEx,Mode=TwoWay}" x:Uid="UseRegExLabel"/>
+                                    <CheckBox IsChecked="{Binding RestrictSearch,Mode=TwoWay}" x:Uid="RestrictSearchLabel"/>
+                                    <CheckBox IsChecked="{Binding UseGroup,Mode=TwoWay}" x:Uid="UseGroupLabel"/>
+                                    <CheckBox IsChecked="{Binding AllDocuments,Mode=TwoWay}" x:Uid="AllDocumentsLabel"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Command="{Binding FindNextCommand}" x:Uid="FindButtonLabel"/>
+                                    <Button Command="{Binding ReplaceNextCommand}" x:Uid="ReplaceButtonLabel"/>
+                                    <Button Command="{Binding ReplaceAllCommand}" x:Uid="ReplaceAllButton"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Result,Mode=OneWay}" Margin="0,10,0,0" Foreground="Red"/>
+                            </StackPanel>
+                        </Flyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+                <CommandBar.SecondaryCommands>
+                    <AppBarButton Command="{Binding PrintCommand}" x:Uid="PrintButton"/>
+                    <AppBarButton AllowFocusOnInteraction="True" Name="GoToButton" x:Uid="GoToButton" Click="GoToButton_Click">
+                        <AppBarButton.Flyout>
+                            <Flyout Closed="Flyout_Closed">
+                                <StackPanel Margin="20" x:Load="False" x:Name="GoToUI">
+                                    <TextBlock x:Uid="ToRowLabel" Margin="0,10,0,0"/>
+                                    <TextBox Text="{Binding ToRow,Mode=TwoWay}" Margin="0,10,0,0" x:Uid="ToRowTextBox"/>
+                                    <TextBlock x:Uid="EndRowLabel" Margin="0,10,0,0"/>
+                                    <TextBox IsEnabled="False" Text="{Binding MaxRow}" Margin="0,10,0,0"/>
+                                    <Button x:Uid="LineJumpButtonLabel" Command="{Binding JumpLineCommand}" Margin="0,10,0,0"/>
+                                    <TextBlock Text="{Binding Result,Mode=OneWay}" Margin="0,10,0,0" Foreground="Red"/>
+                                </StackPanel>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                    <AppBarButton AllowFocusOnInteraction="True" x:Uid="PropertyButton" Click="DocumentTypeButton_Click">
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <StackPanel Orientation="Vertical" Margin="20" x:Load="False" x:Name="DocumentTypeUI">
+                                    <TextBlock x:Uid="DocumentTypeLabel" Margin="0,10,0,0"/>
+                                    <ComboBox ItemsSource="{Binding FileTypeCollection}" Width="150" SelectedItem="{Binding DocumentType,Mode=TwoWay}" Margin="0,10,0,0">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding DocumentTypeName}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <TextBlock x:Uid="EncodeTypeLabel" Margin="0,10,0,0"/>
+                                    <ComboBox ItemsSource="{Binding EncodeCollection}" Width="150" SelectedItem="{Binding DocumentEncode,Mode=TwoWay}" Margin="0,10,0,0">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding WebName}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <TextBlock x:Uid="LineFeedTypeLabel" Margin="0,10,0,0"/>
+                                    <ComboBox ItemsSource="{Binding LineFeedCollection}" Width="150" SelectedItem="{Binding DocumentList.Current.LineFeed,Mode=TwoWay}" Margin="0,10,0,0">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Converter={StaticResource LineFeedConverter}}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </StackPanel>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                    <AppBarButton Icon="List" x:Uid="OutlineTree" Command="{Binding OpenOutlineCommand}"/>
+                    <AppBarButton x:Uid="Snipeet"  AllowFocusOnInteraction="True" Click="SnippetButton_Click">
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <StackPanel x:Load="False" x:Name="SnippetUI">
+                                    <TextBlock Text="カテゴリー" />
+                                    <ComboBox Width="300" ItemsSource="{Binding CategoryList}" SelectedItem="{Binding CurrentCategory,Mode=TwoWay}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Name}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <TextBlock Text="挿入文" />
+                                    <ComboBox Width="300" ItemsSource="{Binding Snippets}" SelectedItem="{Binding SelectSnippet,Mode=TwoWay}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Name}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <TextBox Name="Preview"
+                                             Text="{Binding SelectSnippet.Data}"
+                                             IsReadOnly="True"
+                                             AcceptsReturn="True"
+                                             TextWrapping="NoWrap"
+                                             Height="150"
+                                             Width="300"
+                                             Margin="0,10,0,0"/>
+                                    <Button Content="OK" Command="{Binding InsertSnippetCommand}"/>
+                                </StackPanel>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                    <AppBarButton Icon="Setting" x:Uid="SettingButton">
+                        <AppBarButton.Flyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem x:Uid="GlobalSettingFlyout" Command="{Binding GlobalSettingCommand}"/>
+                                <MenuFlyoutItem x:Uid="FileTypesFlyout" Command="{Binding FileTypeSettingCommand}"/>
+                                <MenuFlyoutItem x:Uid="PrintSettingPage" Command="{Binding PrintSettingCommand}"/>
+                                <MenuFlyoutItem x:Uid="AboutPageCommand" Command="{Binding AboutPageCommand}"/>
+                            </MenuFlyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                </CommandBar.SecondaryCommands>
+            </CommandBar>
+            <Pivot x:Name="DocumentList" Grid.Row="1" ItemsSource="{Binding DocumentList}" SelectedItem="{Binding CurrentDocument,Mode=TwoWay}" Background="#FFE6E6E6">
+                <Pivot.Resources>
+                    <Style TargetType="PivotHeaderItem" BasedOn="{StaticResource CustomePivotHeaderStyle}"/>
+                    <Style TargetType="Pivot" BasedOn="{StaticResource CustomPivotStyle}"/>
+                </Pivot.Resources>
+                <Pivot.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <ProgressRing IsActive="True" Width="16" Height="16" Visibility="{Binding IsProgressNow,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                            <TextBlock Text="{Binding Title}" TextAlignment="Center" Margin="10,7,0,4" ToolTipService.ToolTip="{Binding FilePath}"/>
+                            <Ellipse Fill="Black" Width="7" Height="7" Margin="5,0,0,0" Visibility="{Binding Dirty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                            <AppBarButton Icon="Cancel" Command="{Binding DataContext.RemoveDocumentCommand,ElementName=MainWindow}" CommandParameter="{Binding}">
+                                <AppBarButton.Resources>
+                                    <Style TargetType="AppBarButton" BasedOn="{StaticResource CustomAppBarButtonStyle}"/>
+                                </AppBarButton.Resources>
+                            </AppBarButton>
+                        </StackPanel>
+                    </DataTemplate>
+                </Pivot.HeaderTemplate>
+                <Pivot.ItemContainerStyle>
+                    <Style TargetType="PivotItem">
+                        <Setter Property="Margin"
+                    Value="0" />
+                    </Style>
+                </Pivot.ItemContainerStyle>
+                <Pivot.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <foo:FooTextBox 
+                            Name="Textbox" Grid.Row="0"
+                            Document="{Binding DocumentModel.Document}"
+                            FoldingStrategy="{Binding FoldingStrategy}" Hilighter="{Binding Hilighter}"
+                            FontFamily="{Binding FontFamily}" FontSize="{Binding FontSize}"
+                            Foreground="{Binding Foreground}" URL="{Binding URL}"
+                            Comment="{Binding Comment}" Keyword1="{Binding Keyword1}"
+                            Keyword2="{Binding Keyword2}" Literal="{Binding Literal}">
+                            </foo:FooTextBox>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                <TextBlock Text="{Binding CaretPostion,ElementName=Textbox,Converter={StaticResource TextPointConverter}}"
+                       Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding MagnificationPower,ElementName=Textbox,Converter={StaticResource RateConverter}}" Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding DataContext.DocumentEncode.WebName,ElementName=MainWindow}" Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding LineFeed}" Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding DataContext.StatusMessage,ElementName=MainWindow}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </Pivot.ItemTemplate>
+            </Pivot>
+        </Grid>
+    </SplitView>
+
+</Page>

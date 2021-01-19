@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sinppets>
+	<sinppet>
+		<name>XML Document</name>
+		<data>&lt;?xml version=&quot;1.0&quot; encoding=&quot;${encode}&quot;?&gt;</data>
+	</sinppet>
+	<sinppet>
+		<name>HTML4.0 Strict DTD</name>
+		<data>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</data>
+	</sinppet>
+	<sinppet>
+		<name>XHTML1.0 Strict DTD</name>
+		<data>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</data>
+	</sinppet>
+	<sinppet>
+		<name>XHTML1.1 Strict DTD</name>
+		<data>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;</data>
+	</sinppet>
+  <sinppet>
+    <name>HTML5 DTD</name>
+    <data>&lt;!DOCTYPE html&gt;</data>
+  </sinppet>
+  <sinppet>
+		<name>HTML Document</name>
+		<data>
+			&lt;html&gt;\n
+			&lt;head&gt;\n
+			\t&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=${encode}&quot;&gt;\n
+			\t&lt;meta name=&quot;author&quot; content=&quot;&quot;&gt;\n
+			\t&lt;meta name=&quot;keywords&quot; content=&quot;&quot;&gt;\n
+			\t&lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;\n
+			\t&lt;meta name=&quot;robots&quot; content=&quot;all&quot;&gt;\n
+			&lt;title&gt;文書のタイトル&lt;/title&gt;\n
+			&lt;link rel=&quot;stylesheet&quot; href=&quot;&quot;&gt;\n
+			&lt;/head&gt;\n
+			&lt;body&gt;\n
+			&lt;/body&gt;\n
+			&lt;/html&gt;\n
+		</data>
+	</sinppet>
+	<sinppet>
+		<name>スタイルシート</name>
+		<data>&lt;link rel=&quot;stylesheet&quot; href=&quot;default.css&quot; type=&quot;text/css&quot; /&gt;</data>
+	</sinppet>
+	<sinppet>
+		<name>表要素</name>
+		<data>
+			\i&lt;table&gt;\n
+			\i\t&lt;tr&gt;\n
+			\i\t\t&lt;td&gt;&lt;/td&gt;\n
+			\i\t&lt;/tr&gt;\n
+			\i&lt;/table&gt;\n
+		</data>
+	</sinppet>
+	<sinppet>
+		<name>リスト要素</name>
+		<data>
+			\i&lt;ol&gt;\n
+			\i\t&lt;li&gt;\n
+			\i\t&lt;/li&gt;\n
+			\i&lt;/ol&gt;\n
+		</data>
+	</sinppet>
+	<sinppet>
+		<name>数値付きリスト要素</name>
+		<data>
+			\i&lt;ul&gt;\n
+			\i\t&lt;li&gt;&lt;/li&gt;\n
+			\i&lt;/ul&gt;\n
+		</data>
+	</sinppet>
+	<sinppet>
+		<name>定義リスト</name>
+		<data>
+			\i&lt;dl&gt;\n
+			\i\t&lt;dt&gt;&lt;/dt&gt;\n
+			\i\t&lt;dd&gt;&lt;/dd&gt;\n
+			\i&lt;/dl&gt;\n
+		</data>
+	</sinppet>
+</sinppets>

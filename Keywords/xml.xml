@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sytaxdefinition hilighter="xml">
+	<mutilinecommentstart>
+    <item>!--</item>
+  </mutilinecommentstart>
+	<mutilinecommentend>
+    <item>--</item>
+  </mutilinecommentend>
+	<literals>
+		<item>"</item>
+	</literals>
+	<operators>
+		<item>&lt;</item>
+		<item>&gt;</item>
+		<item>=</item>
+		<item>/</item>
+	</operators>
+</sytaxdefinition>
+

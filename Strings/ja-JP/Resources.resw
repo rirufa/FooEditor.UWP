@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddButton.Label" xml:space="preserve">
+    <value>新規作成</value>
+  </data>
+  <data name="DocumentTypeLabel.Text" xml:space="preserve">
+    <value>文章タイプ</value>
+  </data>
+  <data name="EnableRTL.Header" xml:space="preserve">
+    <value>右から左に表示する</value>
+  </data>
+  <data name="EndRowLabel.Text" xml:space="preserve">
+    <value>最終行</value>
+  </data>
+  <data name="FlieTypeDetailFlyout.Text" xml:space="preserve">
+    <value>ファイルタイプの設定</value>
+  </data>
+  <data name="FileTypesFlyout.Text" xml:space="preserve">
+    <value>ファイルタイプ</value>
+  </data>
+  <data name="FindButtonLabel.Content" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="FindPatternLabel.Text" xml:space="preserve">
+    <value>検索対象</value>
+  </data>
+  <data name="FontFamilyLabel.Text" xml:space="preserve">
+    <value>フォント</value>
+  </data>
+  <data name="FontSizeLabel.Text" xml:space="preserve">
+    <value>フォントサイズ</value>
+  </data>
+  <data name="LineJumpButtonLabel.Content" xml:space="preserve">
+    <value>ジャンプ</value>
+  </data>
+  <data name="NewDocumentTitle" xml:space="preserve">
+    <value>無題{0}</value>
+    <comment>{0}を削除しないでください</comment>
+  </data>
+  <data name="RemoveButton.Content" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="ReplaceAllButton.Content" xml:space="preserve">
+    <value>全て置換</value>
+  </data>
+  <data name="ReplaceButtonLabel.Content" xml:space="preserve">
+    <value>置換</value>
+  </data>
+  <data name="ReplacePattern.Text" xml:space="preserve">
+    <value>置換対象</value>
+  </data>
+  <data name="RestrictSearchLabel.Content" xml:space="preserve">
+    <value>大文字と小文字を区別する</value>
+  </data>
+  <data name="GlobalSettingFlyout.Text" xml:space="preserve">
+    <value>グローバル設定</value>
+  </data>
+  <data name="SharedDataTitle" xml:space="preserve">
+    <value>選択された文字列</value>
+  </data>
+  <data name="ShowCaretLine.Header" xml:space="preserve">
+    <value>キャレットラインを表示する</value>
+  </data>
+  <data name="ShowDetailButton.Content" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="ShowFullSpace.Header" xml:space="preserve">
+    <value>全角スペースを表示する</value>
+  </data>
+  <data name="ShowLineNumber.Header" xml:space="preserve">
+    <value>行番号を表示する</value>
+  </data>
+  <data name="ShowRuler.Header" xml:space="preserve">
+    <value>ルーラを表示する</value>
+  </data>
+  <data name="ShowTab.Header" xml:space="preserve">
+    <value>タブを表示する</value>
+  </data>
+  <data name="TabCharLabel.Text" xml:space="preserve">
+    <value>タブサイズ</value>
+  </data>
+  <data name="ToRowLabel.Text" xml:space="preserve">
+    <value>行番号</value>
+  </data>
+  <data name="UseGroupLabel.Content" xml:space="preserve">
+    <value>置き換え時にグループ指定を行う</value>
+  </data>
+  <data name="UseRegExLabel.Content" xml:space="preserve">
+    <value>正規表現を使用する</value>
+  </data>
+  <data name="PrivacyButton.Content" xml:space="preserve">
+    <value>プライバシーポリシー</value>
+  </data>
+  <data name="SettingCommandTitle" xml:space="preserve">
+    <value>グローバル設定</value>
+  </data>
+  <data name="HomeTitle.Text" xml:space="preserve">
+    <value>ホーム</value>
+  </data>
+  <data name="OpenLocalButton.Text" xml:space="preserve">
+    <value>ファイルを開く...</value>
+  </data>
+  <data name="NewListGroup" xml:space="preserve">
+    <value>新規作成</value>
+  </data>
+  <data name="RecentListGroup" xml:space="preserve">
+    <value>最近使用したファイル</value>
+  </data>
+  <data name="LineNumberOutOutOfRange" xml:space="preserve">
+    <value>行番号の値は{0}から{1}の範囲内でなければなりません</value>
+    <comment>{0}と{1}を削除しないでください</comment>
+  </data>
+  <data name="LineBreakMethodCharUnit" xml:space="preserve">
+    <value>任意の文字数で折り返す</value>
+  </data>
+  <data name="LineBreakMethodNone" xml:space="preserve">
+    <value>折り返さない</value>
+  </data>
+  <data name="LineBreakMethodPageBound" xml:space="preserve">
+    <value>右端で折り返す</value>
+  </data>
+  <data name="LineBreakCountLabel.Text" xml:space="preserve">
+    <value>折り返しの文字数</value>
+  </data>
+  <data name="LineBreakLabel.Text" xml:space="preserve">
+    <value>折り返し</value>
+  </data>
+  <data name="FindPatternTextBox.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>検索対象</value>
+  </data>
+  <data name="ReplacePatternTextBox.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>置換対象</value>
+  </data>
+  <data name="ToRowTextBox.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>ジャンプ先の行</value>
+  </data>
+  <data name="MagnificationPowerFormat" xml:space="preserve">
+    <value>拡大率:{0}%</value>
+    <comment>{0}を削除しないでください</comment>
+  </data>
+  <data name="TextPointFormat" xml:space="preserve">
+    <value>行:{0} 桁:{1}</value>
+    <comment>{0}と{1}は削除しないでください</comment>
+  </data>
+  <data name="NoInherit.Header" xml:space="preserve">
+    <value>グローバル設定を適用しない</value>
+  </data>
+  <data name="ExtensionListLable.Text" xml:space="preserve">
+    <value>適用する拡張子</value>
+  </data>
+  <data name="ShowLineBreak.Header" xml:space="preserve">
+    <value>改行マークを表示する</value>
+  </data>
+  <data name="EncodeTypeLabel.Text" xml:space="preserve">
+    <value>文字コード</value>
+  </data>
+  <data name="NoButton" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="YesButton" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="LineFeedTypeLabel.Text" xml:space="preserve">
+    <value>改行コード</value>
+  </data>
+  <data name="GoToButton.Label" xml:space="preserve">
+    <value>行ジャンプ</value>
+  </data>
+  <data name="PropertyButton.Label" xml:space="preserve">
+    <value>ドキュメントのプロパティ</value>
+  </data>
+  <data name="RedoButton.Label" xml:space="preserve">
+    <value>やり直す</value>
+  </data>
+  <data name="SaveLocalButton.Text" xml:space="preserve">
+    <value>上書き保存</value>
+  </data>
+  <data name="SearchButton.Label" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="UndoButton.Label" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="ShowFoundPattern.Header" xml:space="preserve">
+    <value>検索パターンを表示する</value>
+  </data>
+  <data name="NotFoundInDocument" xml:space="preserve">
+    <value>ドキュメントの終わりまで検索しました</value>
+  </data>
+  <data name="BottomMarginLabel.Text" xml:space="preserve">
+    <value>下方向の余白</value>
+  </data>
+  <data name="FooterLabel.Text" xml:space="preserve">
+    <value>フッター</value>
+  </data>
+  <data name="HeaderLabel.Text" xml:space="preserve">
+    <value>ヘッダー</value>
+  </data>
+  <data name="LeftMarginLabel.Text" xml:space="preserve">
+    <value>左方向の余白</value>
+  </data>
+  <data name="PrintSettingPage.Text" xml:space="preserve">
+    <value>印刷設定</value>
+  </data>
+  <data name="RightMarginLabel.Text" xml:space="preserve">
+    <value>右方向の余白</value>
+  </data>
+  <data name="TopMarginLabel.Text" xml:space="preserve">
+    <value>上方向の余白</value>
+  </data>
+  <data name="InchiLabel" xml:space="preserve">
+    <value>※余白の単位はインチです</value>
+  </data>
+  <data name="MetricLabel" xml:space="preserve">
+    <value>※余白の単位はミリです</value>
+  </data>
+  <data name="PurchaseButton.Content" xml:space="preserve">
+    <value>購入する</value>
+  </data>
+  <data name="AllDocumentsLabel.Content" xml:space="preserve">
+    <value>全てのドキュメントを対象にする</value>
+  </data>
+  <data name="DiscardDocumentMessage" xml:space="preserve">
+    <value>{0}を閉じますか</value>
+    <comment>{0}は削除しないでください</comment>
+  </data>
+  <data name="SupportButton.Content" xml:space="preserve">
+    <value>ヘルプとサポート</value>
+  </data>
+  <data name="AboutPageCommand.Text" xml:space="preserve">
+    <value>このアプリについて</value>
+  </data>
+  <data name="VersionText" xml:space="preserve">
+    <value>バージョン {0}</value>
+    <comment>{0}は削除しないでください</comment>
+  </data>
+  <data name="IndentBySpace.Header" xml:space="preserve">
+    <value>スペースで字下げを行う</value>
+  </data>
+  <data name="EnableAutoIndent.Header" xml:space="preserve">
+    <value>オートインデンドを有効にする</value>
+  </data>
+  <data name="PrintButton.Label" xml:space="preserve">
+    <value>印刷</value>
+  </data>
+  <data name="SettingButton.Label" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="EnableAutoComplete.Header" xml:space="preserve">
+    <value>自動補完を有効にする</value>
+  </data>
+  <data name="OutlineTree.Label" xml:space="preserve">
+    <value>アウトラインツリー</value>
+  </data>
+  <data name="Snipeet.Label" xml:space="preserve">
+    <value>スニペット</value>
+  </data>
+  <data name="RestoreUsareStateMessage" xml:space="preserve">
+    <value>ドキュメントを復元しますか</value>
+  </data>
+  <data name="SaveAsButton.Text" xml:space="preserve">
+    <value>名前を付けて保存する</value>
+  </data>
+  <data name="NotifySaveCompleteText" xml:space="preserve">
+    <value>{0}で保存しました</value>
+    <comment>{0}は削除しないでください</comment>
+  </data>
+  <data name="DefaultEncodeTypeLabel.Text" xml:space="preserve">
+    <value>デフォルトの文字コード</value>
+  </data>
+  <data name="AddExtentionButton.Content" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="EnableAutoSave.Header" xml:space="preserve">
+    <value>一定間隔ごとに現在の状態を保存する</value>
+  </data>
+  <data name="OpenAsEncodeButton.Text" xml:space="preserve">
+    <value>文字コードでファイルを開く...</value>
+  </data>
+  <data name="OpenAsEncodeDialog.Title" xml:space="preserve">
+    <value>文字コードでファイルを開く</value>
+  </data>
+  <data name="OpenAsEncodeDialog.PrimaryButtonText" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OpenAsEncodeDialog.SecondaryButtonText" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="OpenFromMRU.Text" xml:space="preserve">
+    <value>最近開いたファイル...</value>
+  </data>
+  <data name="OpenRecentlyDialog.PrimaryButtonText" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="OpenRecentlyDialog.SecondaryButtonText" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="OpenRecentlyDialog.Title" xml:space="preserve">
+    <value>最近開いたファイル</value>
+  </data>
+  <data name="SaveAsEncodeButton.Text" xml:space="preserve">
+    <value>文字コードでファイルを保存する...</value>
+  </data>
+  <data name="SaveAsEncodeDialog.PrimaryButtonText" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="SaveAsEncodeDialog.SecondaryButtonText" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="SaveAsEncodeDialog.Title" xml:space="preserve">
+    <value>文字コードでファイルを保存する</value>
+  </data>
+  <data name="OpenButton.Label" xml:space="preserve">
+    <value>ファイルを開く</value>
+  </data>
+  <data name="SaveButton.Label" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="OpenConfigureFolder.Content" xml:space="preserve">
+    <value>設定フォルダーを開く</value>
+  </data>
+  <data name="ReopenConfirm" xml:space="preserve">
+    <value>変更を有効にするには今までの変更を破棄し、再度ファイルを開く必要があります。続行しますか？</value>
+  </data>
+  <data name="EnableGenerateFolding.Header" xml:space="preserve">
+    <value>折り畳みを有効にする</value>
+  </data>
+  <data name="EnableSyntaxHilight.Header" xml:space="preserve">
+    <value>シンタックスハイライトを有効にする</value>
+  </data>
+</root>

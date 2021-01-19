@@ -1,0 +1,27 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FooEditor"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="using:Prism.Windows.Mvvm"
+    x:Class="FooEditor.UWP.Views.PrintSettingsPage"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d"
+    d:DesignWidth="346">
+	<StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+		<TextBlock x:Uid="TopMarginLabel"/>
+        <TextBox Text="{Binding TopMargin,Mode=TwoWay}" Margin="0,0,0,10"/>
+        <TextBlock x:Uid="RightMarginLabel" Margin="0,0,0,10"/>
+        <TextBox Text="{Binding RightMargin,Mode=TwoWay}" Margin="0,0,0,10"/>
+        <TextBlock x:Uid="BottomMarginLabel" Margin="0,0,0,10"/>
+        <TextBox Text="{Binding BottomMargin,Mode=TwoWay}" Margin="0,0,0,10"/>
+        <TextBlock x:Uid="LeftMarginLabel" Margin="0,0,0,10"/>
+        <TextBox Text="{Binding LeftMargin,Mode=TwoWay}" Margin="0,0,0,10"/>
+        <TextBlock x:Uid="HeaderLabel" Margin="0,0,0,10"/>
+        <TextBox Text="{Binding Header,Mode=TwoWay}" Margin="0,0,0,10"/>
+        <TextBlock x:Uid="FooterLabel" Margin="0,0,0,10"/>
+        <TextBox Text="{Binding Footer,Mode=TwoWay}" Margin="0,0,0,10"/>
+        <TextBlock x:Name="UnitNotice" Text="{Binding UnitNoticeText}" Margin="0,0,0,10"/>
+    </StackPanel>
+</Page>

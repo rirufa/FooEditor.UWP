@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DocumentTypeLabel.Text" xml:space="preserve">
+    <value>Document types</value>
+  </data>
+  <data name="EnableRTL.Header" xml:space="preserve">
+    <value>Show right-to-left</value>
+  </data>
+  <data name="EndRowLabel.Text" xml:space="preserve">
+    <value>Last row</value>
+  </data>
+  <data name="FindButtonLabel.Content" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="FindPatternLabel.Text" xml:space="preserve">
+    <value>Search for</value>
+  </data>
+  <data name="FontFamilyLabel.Text" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="FontSizeLabel.Text" xml:space="preserve">
+    <value>Font size</value>
+  </data>
+  <data name="LineJumpButtonLabel.Content" xml:space="preserve">
+    <value>Jump</value>
+  </data>
+  <data name="NewDocumentTitle" xml:space="preserve">
+    <value>Untitled {0}</value>
+    <comment>{0}を削除しないでください</comment>
+  </data>
+  <data name="RemoveButton.Content" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ReplaceAllButton.Content" xml:space="preserve">
+    <value>Replace all</value>
+  </data>
+  <data name="ReplaceButtonLabel.Content" xml:space="preserve">
+    <value>Replace</value>
+  </data>
+  <data name="ReplacePattern.Text" xml:space="preserve">
+    <value>Replace for</value>
+  </data>
+  <data name="RestrictSearchLabel.Content" xml:space="preserve">
+    <value>Casesenstive</value>
+  </data>
+  <data name="SharedDataTitle" xml:space="preserve">
+    <value>The selected string</value>
+  </data>
+  <data name="ShowCaretLine.Header" xml:space="preserve">
+    <value>Show caret line</value>
+  </data>
+  <data name="ShowDetailButton.Content" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="ShowFullSpace.Header" xml:space="preserve">
+    <value>Show full-space</value>
+  </data>
+  <data name="ShowLineNumber.Header" xml:space="preserve">
+    <value>Show line-numbers</value>
+  </data>
+  <data name="ShowRuler.Header" xml:space="preserve">
+    <value>Show rulers</value>
+  </data>
+  <data name="ShowTab.Header" xml:space="preserve">
+    <value>Show tab</value>
+  </data>
+  <data name="TabCharLabel.Text" xml:space="preserve">
+    <value>Tab size</value>
+  </data>
+  <data name="ToRowLabel.Text" xml:space="preserve">
+    <value>Line number</value>
+  </data>
+  <data name="UseGroupLabel.Content" xml:space="preserve">
+    <value>Apply group when replacing</value>
+  </data>
+  <data name="UseRegExLabel.Content" xml:space="preserve">
+    <value>Use regular expressions</value>
+  </data>
+  <data name="PrivacyButton.Content" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="SettingCommandTitle" xml:space="preserve">
+    <value>Global</value>
+  </data>
+  <data name="HomeTitle.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="NewListGroup" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="RecentListGroup" xml:space="preserve">
+    <value>Recently files</value>
+  </data>
+  <data name="LineNumberOutOutOfRange" xml:space="preserve">
+    <value>The line number must be in the range of {1} from {0}.</value>
+    <comment>{0}と{1}を削除しないでください</comment>
+  </data>
+  <data name="LineBreakMethodCharUnit" xml:space="preserve">
+    <value>Break line by char count</value>
+  </data>
+  <data name="LineBreakMethodNone" xml:space="preserve">
+    <value>Do not break line</value>
+  </data>
+  <data name="LineBreakMethodPageBound" xml:space="preserve">
+    <value>Break line by width</value>
+  </data>
+  <data name="LineBreakCountLabel.Text" xml:space="preserve">
+    <value>Linebreak count</value>
+  </data>
+  <data name="LineBreakLabel.Text" xml:space="preserve">
+    <value>LineBreak</value>
+  </data>
+  <data name="FindPatternTextBox.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Search for</value>
+  </data>
+  <data name="ReplacePatternTextBox.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Replace for</value>
+  </data>
+  <data name="ToRowTextBox.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Jump to line</value>
+  </data>
+  <data name="MagnificationPowerFormat" xml:space="preserve">
+    <value>Magnification Power:{0}%</value>
+    <comment>{0}を削除しないでください</comment>
+  </data>
+  <data name="TextPointFormat" xml:space="preserve">
+    <value>Row:{0} Col:{1}</value>
+    <comment>{0}と{1}は削除しないでください</comment>
+  </data>
+  <data name="NoInherit.Header" xml:space="preserve">
+    <value>Does not aplly global setting</value>
+  </data>
+  <data name="ExtensionListLable.Text" xml:space="preserve">
+    <value>aplly for extensions</value>
+  </data>
+  <data name="ShowLineBreak.Header" xml:space="preserve">
+    <value>Show line break</value>
+  </data>
+  <data name="EncodeTypeLabel.Text" xml:space="preserve">
+    <value>Encoding</value>
+  </data>
+  <data name="NoButton" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="YesButton" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="LineFeedTypeLabel.Text" xml:space="preserve">
+    <value>Line feed</value>
+  </data>
+  <data name="GoToButton.Label" xml:space="preserve">
+    <value>Line Jump</value>
+  </data>
+  <data name="PropertyButton.Label" xml:space="preserve">
+    <value>Document Property</value>
+  </data>
+  <data name="RedoButton.Label" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="SearchButton.Label" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="UndoButton.Label" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="ShowFoundPattern.Header" xml:space="preserve">
+    <value>Show found pattern</value>
+  </data>
+  <data name="NotFoundInDocument" xml:space="preserve">
+    <value>You have searched to the end of the document</value>
+  </data>
+  <data name="BottomMarginLabel.Text" xml:space="preserve">
+    <value>Padding of bottom</value>
+  </data>
+  <data name="FooterLabel.Text" xml:space="preserve">
+    <value>Fotter</value>
+  </data>
+  <data name="HeaderLabel.Text" xml:space="preserve">
+    <value>Header</value>
+  </data>
+  <data name="LeftMarginLabel.Text" xml:space="preserve">
+    <value>Padding of left</value>
+  </data>
+  <data name="RightMarginLabel.Text" xml:space="preserve">
+    <value>Padding of right</value>
+  </data>
+  <data name="TopMarginLabel.Text" xml:space="preserve">
+    <value>Padding of top</value>
+  </data>
+  <data name="PurchaseButton.Content" xml:space="preserve">
+    <value>Purchase</value>
+  </data>
+  <data name="AllDocumentsLabel.Content" xml:space="preserve">
+    <value>Target for all documents</value>
+  </data>
+  <data name="DiscardDocumentMessage" xml:space="preserve">
+    <value>Do you close the{0}?</value>
+    <comment>{0}は削除しないでください</comment>
+  </data>
+  <data name="SupportButton.Content" xml:space="preserve">
+    <value>Help and Support</value>
+  </data>
+  <data name="VersionText" xml:space="preserve">
+    <value>Version {0}</value>
+    <comment>{0}は削除しないでください</comment>
+  </data>
+  <data name="IndentBySpace.Header" xml:space="preserve">
+    <value>Indent by space</value>
+  </data>
+  <data name="FileTypesFlyout.Text" xml:space="preserve">
+    <value>FileType</value>
+  </data>
+  <data name="GlobalSettingFlyout.Text" xml:space="preserve">
+    <value>Global Setting</value>
+  </data>
+  <data name="PrintSettingPage.Text" xml:space="preserve">
+    <value>Print Setting</value>
+  </data>
+  <data name="InchiLabel" xml:space="preserve">
+    <value>※A unit of padding is inch</value>
+  </data>
+  <data name="MetricLabel" xml:space="preserve">
+    <value>※A unit of padding is mm</value>
+  </data>
+  <data name="EnableAutoIndent.Header" xml:space="preserve">
+    <value>Enable AutoIndent</value>
+  </data>
+  <data name="AddButton.Label" xml:space="preserve">
+    <value>New Document</value>
+  </data>
+  <data name="PrintButton.Label" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="SettingButton.Label" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="EnableAutoComplete.Header" xml:space="preserve">
+    <value>Enable AutoComplete</value>
+  </data>
+  <data name="OutlineTree.Label" xml:space="preserve">
+    <value>OutlineTree</value>
+  </data>
+  <data name="Snipeet.Label" xml:space="preserve">
+    <value>Snippets</value>
+  </data>
+  <data name="RestoreUsareStateMessage" xml:space="preserve">
+    <value>Are you sure to restore previous documents?</value>
+  </data>
+  <data name="SaveAsButton.Text" xml:space="preserve">
+    <value>SaveAs</value>
+  </data>
+  <data name="NotifySaveCompleteText" xml:space="preserve">
+    <value>Saved as {0}</value>
+    <comment>{0}は削除しないでください</comment>
+  </data>
+  <data name="DefaultEncodeTypeLabel.Text" xml:space="preserve">
+    <value>Default Encoding</value>
+  </data>
+  <data name="AddExtentionButton.Content" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="EnableAutoSave.Header" xml:space="preserve">
+    <value>Save current document at regular interval</value>
+  </data>
+  <data name="OpenAsEncodeButton.Text" xml:space="preserve">
+    <value>OpenFileByEncoding...</value>
+  </data>
+  <data name="OpenAsEncodeDialog.Title" xml:space="preserve">
+    <value>OpenFileByEncoding</value>
+  </data>
+  <data name="OpenAsEncodeDialog.PrimaryButtonText" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OpenAsEncodeDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="OpenFromMRU.Text" xml:space="preserve">
+    <value>OpenRecently...</value>
+  </data>
+  <data name="OpenRecentlyDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="OpenRecentlyDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="OpenRecentlyDialog.Title" xml:space="preserve">
+    <value>OpenRecently</value>
+  </data>
+  <data name="SaveAsEncodeButton.Text" xml:space="preserve">
+    <value>Save as encoding...</value>
+  </data>
+  <data name="SaveAsEncodeDialog.PrimaryButtonText" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="SaveAsEncodeDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SaveAsEncodeDialog.Title" xml:space="preserve">
+    <value>Save as encoding
+</value>
+  </data>
+  <data name="FlieTypeDetailFlyout.Text" xml:space="preserve">
+    <value>FileType Setting</value>
+  </data>
+  <data name="AboutPageCommand.Text" xml:space="preserve">
+    <value>About This App</value>
+  </data>
+  <data name="OpenLocalButton.Text" xml:space="preserve">
+    <value>Open File...</value>
+  </data>
+  <data name="SaveLocalButton.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveButton.Label" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="OpenButton.Label" xml:space="preserve">
+    <value>Open File</value>
+  </data>
+  <data name="OpenConfigureFolder.Content" xml:space="preserve">
+    <value>Open App Setting Folder</value>
+  </data>
+  <data name="ReopenConfirm" xml:space="preserve">
+    <value>To change some status,it discord all changes. Do you want to continue?</value>
+  </data>
+  <data name="EnableGenerateFolding.Header" xml:space="preserve">
+    <value>Enable folding</value>
+  </data>
+  <data name="EnableSyntaxHilight.Header" xml:space="preserve">
+    <value>Enable Syntax Hilight</value>
+  </data>
+</root>

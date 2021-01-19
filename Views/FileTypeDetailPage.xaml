@@ -1,0 +1,61 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="FooEditor.UWP.Views.FileTypeDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FooEditor.UWP"
+    xmlns:common="using:FooEditor.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:prism="using:Prism.Windows.Mvvm"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    >
+    <Page.Resources>
+        <local:LineBreakMethodConverter x:Name="LineBreakMethodConverter"/>
+    </Page.Resources>
+    <ScrollViewer>
+        <StackPanel Margin="30,0,30,0" Name="FlyLayoutCotent">
+            <TextBlock x:Uid="FlieTypeDetailFlyout" Style="{StaticResource TitleTextBlockStyle}"/>
+            <ToggleSwitch IsOn="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="NoInherit" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch IsOn="{Binding FileType.ShowRuler,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="ShowRuler" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch IsOn="{Binding FileType.ShowLineNumber,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="ShowLineNumber" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch IsOn="{Binding FileType.ShowFullSpace,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="ShowFullSpace" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch IsOn="{Binding FileType.ShowTab,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="ShowTab" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch IsOn="{Binding FileType.ShowLineBreak,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="ShowLineBreak" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch IsOn="{Binding FileType.IndentBySpace,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="IndentBySpace" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch IsOn="{Binding FileType.EnableAutoIndent,Mode=TwoWay}" x:Uid="EnableAutoIndent" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch IsOn="{Binding FileType.EnableAutoComplete,Mode=TwoWay}" x:Uid="EnableAutoComplete" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch IsOn="{Binding FileType.EnableSyntaxHilight,Mode=TwoWay}" x:Uid="EnableSyntaxHilight" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch IsOn="{Binding FileType.EnableGenerateFolding,Mode=TwoWay}" x:Uid="EnableGenerateFolding" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" HorizontalAlignment="Stretch"/>
+            <TextBlock x:Uid="LineBreakLabel" Margin="0,0,0,10"/>
+            <ComboBox Name="LineBreakMethodCollection" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" ItemsSource="{Binding LineBreakMethodList}" SelectedItem="{Binding FileType.LineBreakMethod,Mode=TwoWay}" Margin="0,0,0,10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource LineBreakMethodConverter}}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock x:Uid="LineBreakCountLabel" Margin="0,0,0,10"/>
+            <TextBox Text="{Binding FileType.LineBreakCount}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" Margin="0,0,0,10"/>
+            <TextBlock x:Uid="TabCharLabel" Margin="0,0,0,10"/>
+            <Slider Value="{Binding FileType.TabCharCount,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" Minimum="1" Maximum="32"/>
+            <TextBlock x:Uid="ExtensionListLable" Margin="0,0,0,10"/>
+            <ListView ItemsSource="{Binding FileType.ExtensionCollection}"
+                     Name="ExtensionList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" Width="100"/>
+                            <Button x:Uid="RemoveButton" Command="{Binding ElementName=FlyLayoutCotent,Path=DataContext.RemoveCommand}" CommandParameter="{Binding}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+                <TextBox Width="100" Text="{Binding NewExtension,Mode=TwoWay}"/>
+                <Button x:Uid="AddExtentionButton" Command="{Binding DataContext.AddCommand,ElementName=FlyLayoutCotent}"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

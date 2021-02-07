@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -26,6 +27,11 @@ namespace FooEditor.UWP.Views
             InputPane currentView = InputPane.GetForCurrentView();
             currentView.Showing += currentView_Showing;
             currentView.Hiding += currentView_Hiding;
+        }
+
+        public void SetRootFrame(Frame frame)
+        {
+            this.RootPanel.Pane = frame;
         }
 
         void currentView_Hiding(InputPane sender, InputPaneVisibilityEventArgs args)
@@ -63,20 +69,21 @@ namespace FooEditor.UWP.Views
             t.Wait();
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        public async Task Init(object param, bool require_restore, Dictionary<string, object> viewModelState)
         {
-            base.OnNavigatedFrom(e);
-            PrintManager.GetForCurrentView().PrintTaskRequested -= MainPage_PrintTaskRequested;
-            Window.Current.CoreWindow.KeyUp -= CoreWindow_KeyUp;
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
             //VM内で追加する設定が反映されないので、ここで追加する
             MainPageViewModel vm = this.DataContext as MainPageViewModel;
             PrintManager.GetForCurrentView().PrintTaskRequested += MainPage_PrintTaskRequested;
             Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
+            await vm.Init(param, require_restore, viewModelState);
+        }
+
+        public async Task Suspend(bool suspending, Dictionary<string, object> viewModelState)
+        {
+            MainPageViewModel vm = this.DataContext as MainPageViewModel;
+            PrintManager.GetForCurrentView().PrintTaskRequested -= MainPage_PrintTaskRequested;
+            Window.Current.CoreWindow.KeyUp -= CoreWindow_KeyUp;
+            await vm.Suspend(viewModelState, suspending);            
         }
 
         public async void OpenFromArgs(object args)
@@ -204,6 +211,17 @@ namespace FooEditor.UWP.Views
         private void SnippetButton_Click(object sender, RoutedEventArgs e)
         {
             this.FindName("SnippetUI");
+        }
+
+        private void OutlineButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.FindName("OutlineUI");
+        }
+
+        private void Grid_GotFocus(object sender, RoutedEventArgs e)
+        {
+            MainPageViewModel vm = this.DataContext as MainPageViewModel;
+            vm.IsNavPaneOpen = false;
         }
         /* 要修正 */
     }

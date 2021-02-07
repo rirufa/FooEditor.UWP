@@ -16,12 +16,10 @@
         <ResourceDictionary Source="MainPageStyles.xaml" />
     </Page.Resources>
     <SplitView
-        IsPaneOpen="{Binding IsOutLineOpen,Mode=TwoWay}"
+        IsPaneOpen="{Binding IsNavPaneOpen,Mode=TwoWay}"
+        DisplayMode="Inline"   
         Name="RootPanel">
-        <SplitView.Pane>
-            <view:OutlineView/>
-        </SplitView.Pane>
-        <Grid AllowDrop="True" DragOver="Grid_DragOver" Drop="Grid_Drop">
+        <Grid AllowDrop="True" DragOver="Grid_DragOver" Drop="Grid_Drop" GotFocus="Grid_GotFocus">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
@@ -120,7 +118,13 @@
                             </Flyout>
                         </AppBarButton.Flyout>
                     </AppBarButton>
-                    <AppBarButton Icon="List" x:Uid="OutlineTree" Command="{Binding OpenOutlineCommand}"/>
+                    <AppBarButton Icon="List" AllowFocusOnInteraction="True" x:Uid="OutlineTree" Click="OutlineButton_Click" Command="{Binding OpenOutlineCommand}">
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <view:OutlineView x:Name="OutlineUI"/>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
                     <AppBarButton x:Uid="Snipeet"  AllowFocusOnInteraction="True" Click="SnippetButton_Click">
                         <AppBarButton.Flyout>
                             <Flyout>

@@ -19,6 +19,7 @@ using Prism.Windows.AppModel;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Windows.UI.Xaml;
 
 namespace FooEditor.UWP
 {
@@ -58,17 +59,30 @@ namespace FooEditor.UWP
             return base.OnInitializeAsync(args);
         }
 
-        protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
+        protected override UIElement CreateShell(Frame rootFrame)
         {
-            if (!args.PrelaunchActivated)
-            {
-                NavigationService.Navigate("Main", null);
-            }
-            return Task.FromResult<object>(null);
+            var main = new MainPage();
+            main.SetRootFrame(rootFrame);
+            return main;
         }
 
-        protected override Task OnActivateApplicationAsync(IActivatedEventArgs args)
+        protected override async Task OnResumeApplicationAsync(IActivatedEventArgs args)
         {
+            MainPage main = (MainPage)this.Shell;
+            await main.Init(null, true, this.SessionStateService.SessionState);
+        }
+
+        protected override async Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
+        {
+            MainPage main = (MainPage)this.Shell;
+            await main.Init(null, false, this.SessionStateService.SessionState);
+            //何でもいいので適当なページを遷移させておく
+            this.NavigationService.Navigate("About", null);
+        }
+
+        protected override async Task OnActivateApplicationAsync(IActivatedEventArgs args)
+        {
+            MainPage main = (MainPage)this.Shell;
             var fileargs = args as FileActivatedEventArgs;
             if (fileargs != null)
             {
@@ -82,24 +96,24 @@ namespace FooEditor.UWP
                 //そのまま渡すと中断時に落ちるので文字列に変換する
                 ObjectToXmlConverter conv = new ObjectToXmlConverter();
                 object param = conv.Convert(filepaths.ToArray(), typeof(string[]), null, null);
-
-                Frame frame = (Frame)this.Shell;
-                MainPage page = frame.Content as MainPage;
-                if (page == null)
-                    NavigationService.Navigate("Main", param);
-                else
-                    page.OpenFromArgs(param);
+                await main.Init(param, false, this.SessionStateService.SessionState);
             }
             else
             {
-                NavigationService.Navigate("Main", null);
+                await main.Init(null, false, this.SessionStateService.SessionState);
             }
-            return Task.FromResult<object>(null);
+
         }
 
         protected override void OnFileActivated(FileActivatedEventArgs args)
         {
             this.OnActivated(args);
+        }
+
+        protected override async Task OnSuspendingApplicationAsync()
+        {
+            MainPage main = (MainPage)this.Shell;
+            await main.Suspend(true, this.SessionStateService.SessionState);
         }
     }
 }

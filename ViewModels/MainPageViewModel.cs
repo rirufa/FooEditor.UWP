@@ -40,14 +40,12 @@ namespace FooEditor.UWP.ViewModels
             this.MainViewService = mainViewService;
         }
 
-        public override async void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
+        public async Task Init(object param,bool require_restore , Dictionary<string, object> viewModelState)
         {
-            base.OnNavigatedTo(e, viewModelState);
-
             this.DocumentList.ActiveDocumentChanged += DocumentList_ActiveDocumentChanged;
 
             //復元する必要がある
-            if(e.NavigationMode == NavigationMode.New || e.NavigationMode == NavigationMode.Refresh)
+            if (require_restore)
             {
                 if (viewModelState != null && viewModelState.Count > 0)
                 {
@@ -56,11 +54,7 @@ namespace FooEditor.UWP.ViewModels
                 }
             }
 
-            //初めて起動した場合
-            if (e.NavigationMode == NavigationMode.New)
-            {
-                await this.OpenFromArgs(e.Parameter);
-            }
+            await this.OpenFromArgs(param);
 
             if (this.DocumentList.Count == 0)
                 this.DocumentList.AddNewDocument();
@@ -73,6 +67,7 @@ namespace FooEditor.UWP.ViewModels
             this.timer.Interval = new TimeSpan(0, 0, DocumentCollection.TimerTickInterval);
             this.timer.Tick += Timer_Tick;
             this.timer.Start();
+
         }
 
         public async Task OpenFromArgs(object args)
@@ -129,28 +124,23 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        public override async void OnNavigatingFrom(NavigatingFromEventArgs e, Dictionary<string, object> viewModelState, bool suspending)
+        public async Task Suspend(Dictionary<string, object> viewModelState, bool suspending)
         {
-            base.OnNavigatingFrom(e, viewModelState, suspending);
-
-            if(suspending)
+            if (suspending)
             {
                 viewModelState["CurrentDocumentIndex"] = this.DocumentList.CurrentDocumentIndex;    //選択中のドキュメントは別途保存する必要がある
 
                 await AppSettings.Current.Save();
             }
 
-            //null以外の場合はパンドラーを外す必要がある
-            if(e.SourcePageType != null)
+            this.DocumentList.ActiveDocumentChanged -= DocumentList_ActiveDocumentChanged;
+            if (this.timer != null)
             {
-                this.DocumentList.ActiveDocumentChanged -= DocumentList_ActiveDocumentChanged;
-                if (this.timer != null)
-                {
-                    this.timer.Stop();
-                    this.timer.Tick -= Timer_Tick;
-                    this.timer = null;
-                }
+                this.timer.Stop();
+                this.timer.Tick -= Timer_Tick;
+                this.timer = null;
             }
+
         }
 
         private void DocumentList_ActiveDocumentChanged(object sender, DocumentCollectionEventArgs e)
@@ -404,6 +394,7 @@ namespace FooEditor.UWP.ViewModels
             {
                 return new DelegateCommand<object>((s) => {
                     NavigationService.Navigate("GlobalSetting", null);
+                    this.IsNavPaneOpen = true;
                 });
             }
         }
@@ -414,6 +405,7 @@ namespace FooEditor.UWP.ViewModels
             {
                 return new DelegateCommand<object>((s) => {
                     NavigationService.Navigate("FileTypes", null);
+                    this.IsNavPaneOpen = true;
                 });
             }
         }
@@ -424,6 +416,7 @@ namespace FooEditor.UWP.ViewModels
             {
                 return new DelegateCommand<object>((s) => {
                     NavigationService.Navigate("PrintSettings", null);
+                    this.IsNavPaneOpen = true;
                 });
             }
         }
@@ -434,6 +427,7 @@ namespace FooEditor.UWP.ViewModels
             {
                 return new DelegateCommand<object>((s) => {
                     NavigationService.Navigate("About", null);
+                    this.IsNavPaneOpen = true;
                 });
             }
         }
@@ -803,9 +797,9 @@ namespace FooEditor.UWP.ViewModels
 
         #endregion
 
-        #region Outline
+        #region Panel
         bool _IsOutlineOpen;
-        public bool IsOutLineOpen
+        public bool IsNavPaneOpen
         {
             get
             {
@@ -814,16 +808,6 @@ namespace FooEditor.UWP.ViewModels
             set
             {
                 SetProperty(ref this._IsOutlineOpen, value);
-            }
-        }
-
-        public DelegateCommand<object> OpenOutlineCommand
-        {
-            get
-            {
-                return new DelegateCommand<object>((s) => {
-                    this.IsOutLineOpen = true;
-                });
             }
         }
         #endregion

@@ -118,7 +118,7 @@
                             </Flyout>
                         </AppBarButton.Flyout>
                     </AppBarButton>
-                    <AppBarButton Icon="List" AllowFocusOnInteraction="True" x:Uid="OutlineTree" Click="OutlineButton_Click" Command="{Binding OpenOutlineCommand}">
+                    <AppBarButton Icon="List" AllowFocusOnInteraction="True" x:Uid="OutlineTree" Click="OutlineButton_Click">
                         <AppBarButton.Flyout>
                             <Flyout>
                                 <view:OutlineView x:Name="OutlineUI"/>

@@ -31,7 +31,7 @@ namespace FooEditor.UWP.Views
 
         public void SetRootFrame(Frame frame)
         {
-            this.RootPanel.Pane = frame;
+            this.NavigationContent.Content = frame;
         }
 
         void currentView_Hiding(InputPane sender, InputPaneVisibilityEventArgs args)
@@ -216,12 +216,6 @@ namespace FooEditor.UWP.Views
         private void OutlineButton_Click(object sender, RoutedEventArgs e)
         {
             this.FindName("OutlineUI");
-        }
-
-        private void Grid_GotFocus(object sender, RoutedEventArgs e)
-        {
-            MainPageViewModel vm = this.DataContext as MainPageViewModel;
-            vm.IsNavPaneOpen = false;
         }
         /* 要修正 */
     }

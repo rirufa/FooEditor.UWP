@@ -19,7 +19,19 @@
         IsPaneOpen="{Binding IsNavPaneOpen,Mode=TwoWay}"
         DisplayMode="Inline"   
         Name="RootPanel">
-        <Grid AllowDrop="True" DragOver="Grid_DragOver" Drop="Grid_Drop" GotFocus="Grid_GotFocus">
+        <SplitView.Pane>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <CommandBar Grid.Row="0" x:Name="SubCommandBar">
+                    <AppBarButton Command="{Binding CloseSideBarCommand}" Icon="Cancel"/>
+                </CommandBar>
+                <ContentControl Grid.Row="1"  x:Name="NavigationContent"></ContentControl>
+            </Grid>
+        </SplitView.Pane>
+        <Grid AllowDrop="True" DragOver="Grid_DragOver" Drop="Grid_Drop">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>

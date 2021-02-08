@@ -449,6 +449,16 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
+        public DelegateCommand<object> CloseSideBarCommand
+        {
+            get
+            {
+                return new DelegateCommand<object>(async (s) => {
+                    this.IsNavPaneOpen = false;
+                });
+            }
+        }
+
         string _Result;
         public string Result
         {

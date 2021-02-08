@@ -480,6 +480,17 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
+        public DelegateCommand<object> OpenGoToCommand
+        {
+            get
+            {
+                return new DelegateCommand<object>((s) => {
+                    this.NavigationService.Navigate("Goto", null);
+                    this.IsNavPaneOpen = true;
+                });
+            }
+        }
+
         string _StatusMessage;
         public string StatusMessage
         {
@@ -492,64 +503,6 @@ namespace FooEditor.UWP.ViewModels
                 SetProperty(ref this._StatusMessage, value);
             }
         }
-
-        #region GoTo
-        string _Result;
-        public string Result
-        {
-            get
-            {
-                return this._Result;
-            }
-            set
-            {
-                SetProperty(ref this._Result, value);
-            }
-        }
-
-        int _ToRow;
-        public int ToRow
-        {
-            get
-            {
-                return this._ToRow;
-            }
-            set
-            {
-                this._ToRow = value;
-                this.RaisePropertyChanged();
-            }
-        }
-
-        public int MaxRow
-        {
-            get
-            {
-                return this._doc_list.Current.DocumentModel.Document.LayoutLines.Count;
-            }
-        }
-
-        public DelegateCommand<object> JumpLineCommand
-        {
-            get
-            {
-                return new DelegateCommand<object>((s) =>
-                {
-                    var newPostion = new FooEditEngine.TextPoint() ;
-                    newPostion.row = this.ToRow;
-                    newPostion.col = 0;
-                    var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                    if (this.ToRow > MaxRow)
-                    {
-                        this.Result = string.Format(loader.GetString("LineNumberOutOutOfRange"), 1, this.MaxRow);
-                        return;
-                    }
-                    this._doc_list.Current.DocumentModel.Document.CaretPostion = newPostion;
-                    this._doc_list.Current.DocumentModel.Document.RequestRedraw();
-                });
-            }
-        }
-        #endregion
 
         #region DocumentProperty
         public ObservableCollection<FileType> FileTypeCollection

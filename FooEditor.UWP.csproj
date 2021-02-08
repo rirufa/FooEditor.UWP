@@ -120,6 +120,7 @@
     </Compile>
     <Compile Include="ViewModels\AboutPageViewModel.cs" />
     <Compile Include="ViewModels\FindReplacePageViewModel.cs" />
+    <Compile Include="ViewModels\GotoPageViewModel.cs" />
     <Compile Include="ViewModels\SaveAsEncodeViewModel.cs" />
     <Compile Include="ViewModels\OpenRecentlyViewModel.cs" />
     <Compile Include="ViewModels\OpenAsEncodeViewModel.cs" />
@@ -129,6 +130,9 @@
     </Compile>
     <Compile Include="Views\FindReplacePage.xaml.cs">
       <DependentUpon>FindReplacePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GotoPage.xaml.cs">
+      <DependentUpon>GotoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OpenAsEncodeView.xaml.cs">
       <DependentUpon>OpenAsEncodeView.xaml</DependentUpon>
@@ -288,6 +292,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FindReplacePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GotoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

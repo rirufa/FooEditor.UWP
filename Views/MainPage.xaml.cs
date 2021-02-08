@@ -121,8 +121,7 @@ namespace FooEditor.UWP.Views
                         vm.OpenFindAndReplaceCommand.Execute(null);
                         break;
                     case VirtualKey.G:
-                        this.FindName("GoToUI");
-                        this.GoToButton.Flyout.ShowAt(this.FindButton);
+                        vm.OpenGoToCommand.Execute(null);
                         break;
                     case VirtualKey.S:
                         vm.SaveCommand.Execute(null);
@@ -132,14 +131,6 @@ namespace FooEditor.UWP.Views
                         break;
                 }
             }
-        }
-
-        private void Flyout_Closed(object sender, object e)
-        {
-            //ユーザーがフライアウトを閉じたら見せる必要はない
-            MainPageViewModel vm = this.DataContext as MainPageViewModel;
-            if (vm != null)
-                vm.Result = null;
         }
 
         private void Grid_DragOver(object sender, DragEventArgs e)

@@ -183,19 +183,9 @@ namespace FooEditor.UWP.Views
         }
 
         /* とてつもなく汚いが、x:bindが使えないのでとりあえずこうする */
-        private void GoToButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.FindName("GoToUI");
-        }
-
         private void DocumentTypeButton_Click(object sender, RoutedEventArgs e)
         {
             this.FindName("DocumentTypeUI");
-        }
-
-        private void SnippetButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.FindName("SnippetUI");
         }
         /* 要修正 */
     }

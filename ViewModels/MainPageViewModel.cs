@@ -58,7 +58,6 @@ namespace FooEditor.UWP.ViewModels
 
             if (this.DocumentList.Count == 0)
                 this.DocumentList.AddNewDocument();
-            await this.OnLoadCategories();
 
             //前回保存したときのごみが残っていることがある
             await DocumentCollection.CleanUp();
@@ -491,6 +490,17 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
+        public DelegateCommand<object> OpenSnipeetCommand
+        {
+            get
+            {
+                return new DelegateCommand<object>((s) => {
+                    this.NavigationService.Navigate("Snipeet", null);
+                    this.IsNavPaneOpen = true;
+                });
+            }
+        }
+
         string _StatusMessage;
         public string StatusMessage
         {
@@ -596,79 +606,5 @@ namespace FooEditor.UWP.ViewModels
         }
         #endregion
 
-        #region Snippet
-        ObservableCollection<SnippetCategoryViewModel> _CategoryList;
-        public ObservableCollection<SnippetCategoryViewModel> CategoryList
-        {
-            get
-            {
-                return this._CategoryList;
-            }
-            set
-            {
-                SetProperty(ref _CategoryList, value);
-            }
-        }
-
-        SnippetCategoryViewModel _CurrentCategory;
-        public SnippetCategoryViewModel CurrentCategory
-        {
-            get
-            {
-                return this._CurrentCategory;
-            }
-            set
-            {
-                SetProperty(ref _CurrentCategory, value);
-                this.OnChangeCategory();
-            }
-        }
-
-        ObservableCollection<SnippetViewModel> _Snippets;
-        public ObservableCollection<SnippetViewModel> Snippets
-        {
-            get
-            {
-                return this._Snippets;
-            }
-            set
-            {
-                SetProperty(ref this._Snippets, value);
-            }
-        }
-
-        SnippetViewModel _SelectSnippet;
-        public SnippetViewModel SelectSnippet
-        {
-            get
-            {
-                return this._SelectSnippet;
-            }
-            set
-            {
-                SetProperty(ref _SelectSnippet, value);
-            }
-        }
-
-        private async Task OnLoadCategories()
-        {
-            this.CategoryList = await SnipeetLoader.LoadCategory();
-        }
-
-        private async void OnChangeCategory()
-        {
-            this.Snippets = await SnipeetLoader.LoadSnippets(this.CurrentCategory.FilePath);
-        }
-
-        public DelegateCommand<object> InsertSnippetCommand
-        {
-            get
-            {
-                return new DelegateCommand<object>((s) => {
-                    this.SelectSnippet.InsetToDocument(this.DocumentList.Current.DocumentModel);
-                });
-            }
-        }
-        #endregion
     }
 }

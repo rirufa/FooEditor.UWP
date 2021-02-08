@@ -95,39 +95,8 @@
                             </Flyout>
                         </AppBarButton.Flyout>
                     </AppBarButton>
-                    <AppBarButton Icon="List" AllowFocusOnInteraction="True" x:Uid="OutlineTree" Command="{Binding OpenOutlineCommand}" />
-                    <AppBarButton x:Uid="Snipeet"  AllowFocusOnInteraction="True" Click="SnippetButton_Click">
-                        <AppBarButton.Flyout>
-                            <Flyout>
-                                <StackPanel x:Load="False" x:Name="SnippetUI">
-                                    <TextBlock Text="カテゴリー" />
-                                    <ComboBox Width="300" ItemsSource="{Binding CategoryList}" SelectedItem="{Binding CurrentCategory,Mode=TwoWay}">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Name}"/>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                    <TextBlock Text="挿入文" />
-                                    <ComboBox Width="300" ItemsSource="{Binding Snippets}" SelectedItem="{Binding SelectSnippet,Mode=TwoWay}">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Name}"/>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                    <TextBox Name="Preview"
-                                             Text="{Binding SelectSnippet.Data}"
-                                             IsReadOnly="True"
-                                             AcceptsReturn="True"
-                                             TextWrapping="NoWrap"
-                                             Height="150"
-                                             Width="300"
-                                             Margin="0,10,0,0"/>
-                                    <Button Content="OK" Command="{Binding InsertSnippetCommand}"/>
-                                </StackPanel>
-                            </Flyout>
-                        </AppBarButton.Flyout>
+                    <AppBarButton Icon="List" x:Uid="OutlineTree" Command="{Binding OpenOutlineCommand}" />
+                    <AppBarButton x:Uid="Snipeet" Command="{Binding OpenSnipeetCommand}">
                     </AppBarButton>
                     <AppBarButton Icon="Setting" x:Uid="SettingButton">
                         <AppBarButton.Flyout>

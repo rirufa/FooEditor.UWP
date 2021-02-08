@@ -23,9 +23,9 @@ namespace FooEditor.UWP.Views
     /// <summary>
     /// OutlineWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class OutlineView : UserControl
+    public partial class OutlinePage : Page
     {
-        public OutlineView()
+        public OutlinePage()
         {
             InitializeComponent();
         }
@@ -37,7 +37,7 @@ namespace FooEditor.UWP.Views
 
         private void TextBlock_DoubleTapped(object sender, Windows.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
         {
-            OutlineViewModel vm = this.DataContext as OutlineViewModel;
+            OutlinePageViewModel vm = this.DataContext as OutlinePageViewModel;
             vm.JumpCommand.Execute(this.TreeView.SelectedItem as OutlineTreeItem);
         }
     }

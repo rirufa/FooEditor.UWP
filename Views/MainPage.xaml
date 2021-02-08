@@ -58,29 +58,7 @@
                 </AppBarButton>
                 <AppBarButton Icon="Undo" Command="{Binding UndoCommand}" x:Uid="UndoButton"/>
                 <AppBarButton Icon="Redo" Command="{Binding RedoCommand}" x:Uid="RedoButton"/>
-                <AppBarButton Icon="Find" AllowFocusOnInteraction="True" Name="FindButton" x:Uid="SearchButton" Click="FindButton_Click">
-                    <AppBarButton.Flyout>
-                        <Flyout Closed="Flyout_Closed">
-                            <StackPanel Margin="20" x:Load="False" x:Name="FindUI">
-                                <TextBlock x:Uid="FindPatternLabel" Margin="0,10,0,0"/>
-                                <TextBox Text="{Binding FindPattern,Mode=TwoWay}" Margin="0,10,0,0" x:Uid="FindPatternTextBox"/>
-                                <TextBlock x:Uid="ReplacePattern" Margin="0,10,0,0"/>
-                                <TextBox Text="{Binding ReplacePattern,Mode=TwoWay}" Margin="0,10,0,0" x:Uid="ReplacePatternTextBox"/>
-                                <StackPanel Margin="0,10,0,0">
-                                    <CheckBox IsChecked="{Binding UseRegEx,Mode=TwoWay}" x:Uid="UseRegExLabel"/>
-                                    <CheckBox IsChecked="{Binding RestrictSearch,Mode=TwoWay}" x:Uid="RestrictSearchLabel"/>
-                                    <CheckBox IsChecked="{Binding UseGroup,Mode=TwoWay}" x:Uid="UseGroupLabel"/>
-                                    <CheckBox IsChecked="{Binding AllDocuments,Mode=TwoWay}" x:Uid="AllDocumentsLabel"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Command="{Binding FindNextCommand}" x:Uid="FindButtonLabel"/>
-                                    <Button Command="{Binding ReplaceNextCommand}" x:Uid="ReplaceButtonLabel"/>
-                                    <Button Command="{Binding ReplaceAllCommand}" x:Uid="ReplaceAllButton"/>
-                                </StackPanel>
-                                <TextBlock Text="{Binding Result,Mode=OneWay}" Margin="0,10,0,0" Foreground="Red"/>
-                            </StackPanel>
-                        </Flyout>
-                    </AppBarButton.Flyout>
+                <AppBarButton Icon="Find" Name="FindButton" x:Uid="SearchButton" Command="{Binding OpenFindAndReplaceCommand}">
                 </AppBarButton>
                 <CommandBar.SecondaryCommands>
                     <AppBarButton Command="{Binding PrintCommand}" x:Uid="PrintButton"/>
@@ -130,13 +108,7 @@
                             </Flyout>
                         </AppBarButton.Flyout>
                     </AppBarButton>
-                    <AppBarButton Icon="List" AllowFocusOnInteraction="True" x:Uid="OutlineTree" Click="OutlineButton_Click">
-                        <AppBarButton.Flyout>
-                            <Flyout>
-                                <view:OutlineView x:Name="OutlineUI"/>
-                            </Flyout>
-                        </AppBarButton.Flyout>
-                    </AppBarButton>
+                    <AppBarButton Icon="List" AllowFocusOnInteraction="True" x:Uid="OutlineTree" Command="{Binding OpenOutlineCommand}" />
                     <AppBarButton x:Uid="Snipeet"  AllowFocusOnInteraction="True" Click="SnippetButton_Click">
                         <AppBarButton.Flyout>
                             <Flyout>

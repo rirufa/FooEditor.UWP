@@ -1,5 +1,5 @@
-﻿<UserControl
-    x:Class="FooEditor.UWP.Views.OutlineView"
+﻿<Page
+    x:Class="FooEditor.UWP.Views.OutlinePage"
     x:Name="OutlineWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -41,4 +41,4 @@
             </toolkit:TreeView.ItemTemplate>
         </toolkit:TreeView>
     </Grid>
-</UserControl>
+</Page>

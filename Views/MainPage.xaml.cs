@@ -118,8 +118,7 @@ namespace FooEditor.UWP.Views
                         break;
                     case VirtualKey.F:
                     case VirtualKey.H:
-                        this.FindName("FindUI");
-                        this.FindButton.Flyout.ShowAt(this.FindButton);
+                        vm.OpenFindAndReplaceCommand.Execute(null);
                         break;
                     case VirtualKey.G:
                         this.FindName("GoToUI");
@@ -193,11 +192,6 @@ namespace FooEditor.UWP.Views
         }
 
         /* とてつもなく汚いが、x:bindが使えないのでとりあえずこうする */
-        private void FindButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.FindName("FindUI");
-        }
-
         private void GoToButton_Click(object sender, RoutedEventArgs e)
         {
             this.FindName("GoToUI");
@@ -211,11 +205,6 @@ namespace FooEditor.UWP.Views
         private void SnippetButton_Click(object sender, RoutedEventArgs e)
         {
             this.FindName("SnippetUI");
-        }
-
-        private void OutlineButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.FindName("OutlineUI");
         }
         /* 要修正 */
     }

@@ -14,14 +14,14 @@ using Windows.ApplicationModel.DataTransfer;
 
 namespace FooEditor.UWP.ViewModels
 {
-    class OutlineViewModel : ViewModelBase
+    class OutlinePageViewModel : ViewModelBase
     {
-        public OutlineViewModel()
+        public OutlinePageViewModel()
         {
         }
 
         [InjectionConstructor]
-        public OutlineViewModel(INavigationService nav)
+        public OutlinePageViewModel(INavigationService nav)
         {
             this.DocumentList = DocumentCollection.Instance;
             this.DocumentList.ActiveDocumentChanged += DocumentList_ActiveDocumentChanged;

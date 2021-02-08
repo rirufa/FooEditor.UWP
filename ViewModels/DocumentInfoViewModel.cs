@@ -297,6 +297,12 @@ namespace FooEditor.UWP.ViewModels
                 this.FontFamily = new FontFamily(AppSettings.Current.FontFamily);
         }
 
+        public void OnActivate()
+        {
+            this.RaisePropertyChanged("Encode");
+            this.RaisePropertyChanged("LineFeed");
+        }
+
         public DocumentSource CreatePrintDocument()
         {
             var source = new DocumentSource(this.DocumentModel.Document, new FooEditEngine.Padding(20, 20, 20, 20), this.FontFamily.Source, this.FontSize);

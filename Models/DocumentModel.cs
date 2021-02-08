@@ -83,16 +83,32 @@ namespace FooEditor.UWP.Models
             private set;
         }
 
+        Encoding _Encode;
         public Encoding Encode
         {
-            get;
-            set;
+            get
+            {
+                return _Encode;
+            }
+            set
+            {
+                _Encode = value;
+                this.RaisePropertyChanged();
+            }
         }
 
+        LineFeedType _LineFeed;
         public LineFeedType LineFeed
         {
-            get;
-            set;
+            get
+            {
+                return _LineFeed;
+            }
+            set
+            {
+                _LineFeed = value;
+                this.RaisePropertyChanged();
+            }
         }
 
         public long lastUpdatedTickCount

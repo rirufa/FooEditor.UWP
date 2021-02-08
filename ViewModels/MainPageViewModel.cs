@@ -145,6 +145,7 @@ namespace FooEditor.UWP.ViewModels
         private void DocumentList_ActiveDocumentChanged(object sender, DocumentCollectionEventArgs e)
         {
             this.RaisePropertyChanged("CurrentDocument");
+            this.DocumentList.Current.OnActivate();
         }
 
         DocumentCollection _doc_list;

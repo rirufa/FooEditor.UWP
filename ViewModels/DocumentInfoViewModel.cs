@@ -326,6 +326,8 @@ namespace FooEditor.UWP.ViewModels
             var file = await FileModel.GetFileModel(FileModelBuildType.AbsolutePath, this.FilePath);
             this.DocumentModel.Document.Clear();
             await this.DocumentModel.LoadFile(file, enc);
+            //エンコードが読み込み後に変わる
+            this.RaisePropertyChanged("Encode");
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()

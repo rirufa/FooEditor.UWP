@@ -182,11 +182,5 @@ namespace FooEditor.UWP.Views
 
         }
 
-        /* とてつもなく汚いが、x:bindが使えないのでとりあえずこうする */
-        private void DocumentTypeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.FindName("DocumentTypeUI");
-        }
-        /* 要修正 */
     }
 }

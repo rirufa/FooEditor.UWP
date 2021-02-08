@@ -63,38 +63,8 @@
                 <CommandBar.SecondaryCommands>
                     <AppBarButton Command="{Binding PrintCommand}" x:Uid="PrintButton"/>
                     <AppBarButton Name="GoToButton" x:Uid="GoToButton" Command="{Binding OpenGoToCommand}" />
-                    <AppBarButton AllowFocusOnInteraction="True" x:Uid="PropertyButton" Click="DocumentTypeButton_Click">
-                        <AppBarButton.Flyout>
-                            <Flyout>
-                                <StackPanel Orientation="Vertical" Margin="20" x:Load="False" x:Name="DocumentTypeUI">
-                                    <TextBlock x:Uid="DocumentTypeLabel" Margin="0,10,0,0"/>
-                                    <ComboBox ItemsSource="{Binding FileTypeCollection}" Width="150" SelectedItem="{Binding DocumentType,Mode=TwoWay}" Margin="0,10,0,0">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding DocumentTypeName}"/>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                    <TextBlock x:Uid="EncodeTypeLabel" Margin="0,10,0,0"/>
-                                    <ComboBox ItemsSource="{Binding EncodeCollection}" Width="150" SelectedItem="{Binding DocumentEncode,Mode=TwoWay}" Margin="0,10,0,0">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding WebName}"/>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                    <TextBlock x:Uid="LineFeedTypeLabel" Margin="0,10,0,0"/>
-                                    <ComboBox ItemsSource="{Binding LineFeedCollection}" Width="150" SelectedItem="{Binding DocumentList.Current.LineFeed,Mode=TwoWay}" Margin="0,10,0,0">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Converter={StaticResource LineFeedConverter}}"/>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                </StackPanel>
-                            </Flyout>
-                        </AppBarButton.Flyout>
-                    </AppBarButton>
+                    <AppBarButton x:Uid="PropertyButton" Command="{Binding OpenDocumentInfoCommand}"/>
+
                     <AppBarButton Icon="List" x:Uid="OutlineTree" Command="{Binding OpenOutlineCommand}" />
                     <AppBarButton x:Uid="Snipeet" Command="{Binding OpenSnipeetCommand}">
                     </AppBarButton>
@@ -155,7 +125,7 @@
                                 <TextBlock Text="{Binding CaretPostion,ElementName=Textbox,Converter={StaticResource TextPointConverter}}"
                        Margin="0,0,10,0"/>
                                 <TextBlock Text="{Binding MagnificationPower,ElementName=Textbox,Converter={StaticResource RateConverter}}" Margin="0,0,10,0"/>
-                                <TextBlock Text="{Binding DataContext.DocumentEncode.WebName,ElementName=MainWindow}" Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding Encode.WebName}" Margin="0,0,10,0"/>
                                 <TextBlock Text="{Binding LineFeed}" Margin="0,0,10,0"/>
                                 <TextBlock Text="{Binding DataContext.StatusMessage,ElementName=MainWindow}"/>
                             </StackPanel>

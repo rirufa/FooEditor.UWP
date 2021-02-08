@@ -54,7 +54,13 @@ namespace FooEditor.UWP
                 typeof(MainPage).ToString(),
                 () => {
                     return new MainPageViewModel(NavigationService, new MainViewService());
-                } 
+                }
+                );
+            ViewModelLocationProvider.Register(
+                typeof(DocumentInfoPage).ToString(),
+                () => {
+                    return new DocumentInfoPageViewModel(NavigationService, new MainViewService());
+                }
                 );
             return base.OnInitializeAsync(args);
         }

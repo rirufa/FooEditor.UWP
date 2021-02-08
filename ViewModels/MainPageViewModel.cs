@@ -145,10 +145,6 @@ namespace FooEditor.UWP.ViewModels
         private void DocumentList_ActiveDocumentChanged(object sender, DocumentCollectionEventArgs e)
         {
             this.RaisePropertyChanged("CurrentDocument");
-            this.RaisePropertyChanged("MaxRow");
-            this.RaisePropertyChanged("DocumentType");
-            this.RaisePropertyChanged("Encode");
-            this.RaisePropertyChanged("LineFeed");
         }
 
         DocumentCollection _doc_list;
@@ -501,6 +497,17 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
+        public DelegateCommand<object> OpenDocumentInfoCommand
+        {
+            get
+            {
+                return new DelegateCommand<object>((s) => {
+                    this.NavigationService.Navigate("DocumentInfo", null);
+                    this.IsNavPaneOpen = true;
+                });
+            }
+        }
+
         string _StatusMessage;
         public string StatusMessage
         {
@@ -513,83 +520,6 @@ namespace FooEditor.UWP.ViewModels
                 SetProperty(ref this._StatusMessage, value);
             }
         }
-
-        #region DocumentProperty
-        public ObservableCollection<FileType> FileTypeCollection
-        {
-            get
-            {
-                return AppSettings.Current.FileTypeCollection;
-            }
-        }
-
-        public ObservableCollection<Encoding> EncodeCollection
-        {
-            get
-            {
-                return AppSettings.SupportEncodeCollection;
-            }
-        }
-
-        static ObservableCollection<LineFeedType> lineFeedCollection = new ObservableCollection<LineFeedType>() {
-            LineFeedType.CR,
-            LineFeedType.CRLF,
-            LineFeedType.LF
-        };
-        public ObservableCollection<LineFeedType> LineFeedCollection
-        {
-            get
-            {
-                return lineFeedCollection;
-            }
-        }
-
-        public Encoding DocumentEncode
-        {
-            get
-            {
-                return this._doc_list.Current.Encode;
-            }
-            set
-            {
-                if (this._doc_list.Current.FilePath == null)
-                {
-                    this._doc_list.Current.Encode = value;
-                    this.RaisePropertyChanged();
-                    return;
-                }
-                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                var taskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
-                var task = this.MainViewService.Confirm(
-                    loader.GetString("ReopenConfirm"),
-                    loader.GetString("YesButton"),
-                    loader.GetString("NoButton"));
-                task.ContinueWith(async (s) => {
-                    if (await s == true)
-                        await this._doc_list.Current.ReloadFileAsync(value);
-                    //ファイルを再読み込みしなかった場合でも呼び出さないといけないらしい
-                    this.RaisePropertyChanged();
-                }, taskScheduler);
-            }
-        }
-
-        public FileType DocumentType
-        {
-            get
-            {
-                return this._doc_list.Current.DocumentModel.DocumentType;
-            }
-            set
-            {
-                var taskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
-                var task = this._doc_list.Current.DocumentModel.SetDocumentType(value);
-                task.ContinueWith((s) => {
-                    this.RaisePropertyChanged();
-                },taskScheduler);
-            }
-        }
-
-        #endregion
 
         #region Panel
         bool _IsOutlineOpen;

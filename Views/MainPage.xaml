@@ -25,9 +25,9 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <CommandBar Grid.Row="0" x:Name="SubCommandBar">
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
                     <AppBarButton Command="{Binding CloseSideBarCommand}" Icon="Cancel"/>
-                </CommandBar>
+                </StackPanel>
                 <ContentControl Grid.Row="1"  x:Name="NavigationContent"></ContentControl>
             </Grid>
         </SplitView.Pane>

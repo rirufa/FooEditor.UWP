@@ -156,8 +156,8 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        UI.Color _Foreground = UI.Colors.Black;
-        public UI.Color Foreground
+        Brush _Foreground = new SolidColorBrush(UI.Colors.Black);
+        public Brush Foreground
         {
             get
             {
@@ -169,8 +169,8 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        UI.Color _URL = UI.Colors.Blue;
-        public UI.Color URL
+        Brush _URL = new SolidColorBrush(UI.Colors.Blue);
+        public Brush URL
         {
             get
             {
@@ -182,8 +182,8 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        UI.Color _Comment = UI.Colors.Green;
-        public UI.Color Comment
+        Brush _Comment = new SolidColorBrush(UI.Colors.Green);
+        public Brush Comment
         {
             get
             {
@@ -195,8 +195,8 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        UI.Color _Keyword1 = UI.Colors.Blue;
-        public UI.Color Keyword1
+        Brush _Keyword1 = new SolidColorBrush(UI.Colors.Blue);
+        public Brush Keyword1
         {
             get
             {
@@ -208,8 +208,8 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        UI.Color _Keyword2 = UI.Colors.DarkCyan;
-        public UI.Color Keyword2
+        Brush _Keyword2 = new SolidColorBrush(UI.Colors.DarkCyan);
+        public Brush Keyword2
         {
             get
             {
@@ -221,8 +221,8 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        UI.Color _Literal = UI.Colors.Brown;
-        public UI.Color Literal
+        Brush _Literal = new SolidColorBrush(UI.Colors.Brown);
+        public Brush Literal
         {
             get
             {
@@ -309,12 +309,12 @@ namespace FooEditor.UWP.ViewModels
             source.ParseHF = (s, e) => { return e.Original; };
             source.Header = AppSettings.Current.Header;
             source.Fotter = AppSettings.Current.Footer;
-            source.Forground = this.Foreground;
-            source.Keyword1 = this.Keyword1;
-            source.Keyword2 = this.Keyword2;
-            source.Literal = this.Literal;
-            source.Comment = this.Comment;
-            source.Url = this.URL;
+            source.Forground = ((SolidColorBrush)this.Foreground).Color;
+            source.Keyword1 = ((SolidColorBrush)this.Keyword1).Color;
+            source.Keyword2 = ((SolidColorBrush)this.Keyword2).Color;
+            source.Literal = ((SolidColorBrush)this.Literal).Color;
+            source.Comment = ((SolidColorBrush)this.Comment).Color;
+            source.Url = ((SolidColorBrush)this.URL).Color;
             source.ParseHF = (s, e) => {
                 PrintInfomation info = new PrintInfomation() { Title = this.Title, PageNumber = e.PageNumber };
                 return EditorHelper.ParseHF(e.Original, info);

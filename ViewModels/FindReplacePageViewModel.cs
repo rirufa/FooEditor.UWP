@@ -164,10 +164,12 @@ namespace FooEditor.UWP.ViewModels
                         var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
                         this.Result = loader.GetString("NotFoundInDocument");
                     }
+#if !DEBUG
                     catch (Exception e)
                     {
                         this.Result = e.Message;
                     }
+#endif
                 });
             }
         }
@@ -190,10 +192,12 @@ namespace FooEditor.UWP.ViewModels
                         var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
                         this.Result = loader.GetString("NotFoundInDocument");
                     }
+#if !DEBUG
                     catch (Exception e)
                     {
                         this.Result = e.Message;
                     }
+#endif
                 });
             }
         }
@@ -226,6 +230,6 @@ namespace FooEditor.UWP.ViewModels
             if (!this.FindHistroy.Contains(this.FindPattern))
                 this.FindHistroy.Add(this.FindPattern);
         }
-        #endregion
+#endregion
     }
 }

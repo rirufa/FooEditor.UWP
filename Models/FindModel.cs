@@ -38,6 +38,8 @@ namespace FooEditor.UWP.Models
             {
                 this.iterator = this.GetSearchResult((document) =>
                 {
+                    if (document.Length == 0)
+                        throw new NotFoundExepction();
                     document.SetFindParam(pattern, useregex, opt);
                     if (AppSettings.Current.ShowFoundPattern)
                     {

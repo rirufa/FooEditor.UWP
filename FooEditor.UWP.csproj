@@ -21,7 +21,8 @@
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <HockeyAppResourceId>7fc70d1f9bf64da7b9f2aa49d827b0fe</HockeyAppResourceId>
-    <PackageCertificateThumbprint>F29D8C2BAF8AEBA502A8E4ED4F3817B506FD55A4</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppInstallerUpdateFrequency>0</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>

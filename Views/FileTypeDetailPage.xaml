@@ -16,7 +16,6 @@
     </Page.Resources>
     <ScrollViewer>
         <StackPanel Margin="30,0,30,0" Name="FlyLayoutCotent">
-            <TextBlock x:Uid="FlieTypeDetailFlyout" Style="{StaticResource TitleTextBlockStyle}"/>
             <ToggleSwitch IsOn="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="NoInherit" HorizontalAlignment="Stretch"/>
             <ToggleSwitch IsOn="{Binding FileType.ShowRuler,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="ShowRuler" HorizontalAlignment="Stretch"/>
             <ToggleSwitch IsOn="{Binding FileType.ShowLineNumber,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="ShowLineNumber" HorizontalAlignment="Stretch"/>

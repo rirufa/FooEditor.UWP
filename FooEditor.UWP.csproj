@@ -21,8 +21,7 @@
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <HockeyAppResourceId>7fc70d1f9bf64da7b9f2aa49d827b0fe</HockeyAppResourceId>
-    <PackageCertificateThumbprint>
-    </PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>F29D8C2BAF8AEBA502A8E4ED4F3817B506FD55A4</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppInstallerUpdateFrequency>0</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
@@ -125,6 +124,7 @@
     <Compile Include="ViewModels\SaveAsEncodeViewModel.cs" />
     <Compile Include="ViewModels\OpenRecentlyViewModel.cs" />
     <Compile Include="ViewModels\OpenAsEncodeViewModel.cs" />
+    <Compile Include="ViewModels\SettingPageViewModel.cs" />
     <Compile Include="ViewModels\SnipeetPageViewModel.cs" />
     <Compile Include="ViewModels\SnippetViewModel.cs" />
     <Compile Include="Views\AboutPage.xaml.cs">
@@ -193,6 +193,9 @@
     </Compile>
     <Compile Include="Views\SaveAsEncodeView.xaml.cs">
       <DependentUpon>SaveAsEncodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SnipeetPage.xaml.cs">
       <DependentUpon>SnipeetPage.xaml</DependentUpon>
@@ -356,6 +359,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SnipeetPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -369,7 +376,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FooEditEngnine.UWP">
-      <Version>1.1.3.14</Version>
+      <Version>1.1.3.15</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
       <Version>4.0.0</Version>

@@ -129,10 +129,7 @@
   <data name="EndRowLabel.Text" xml:space="preserve">
     <value>最終行</value>
   </data>
-  <data name="FlieTypeDetailFlyout.Text" xml:space="preserve">
-    <value>ファイルタイプの設定</value>
-  </data>
-  <data name="FileTypesFlyout.Text" xml:space="preserve">
+  <data name="FileTypesPageCommand.Content" xml:space="preserve">
     <value>ファイルタイプ</value>
   </data>
   <data name="FindButtonLabel.Content" xml:space="preserve">
@@ -169,7 +166,7 @@
   <data name="RestrictSearchLabel.Content" xml:space="preserve">
     <value>大文字と小文字を区別する</value>
   </data>
-  <data name="GlobalSettingFlyout.Text" xml:space="preserve">
+  <data name="GlobalSettingPageCommand.Content" xml:space="preserve">
     <value>グローバル設定</value>
   </data>
   <data name="SharedDataTitle" xml:space="preserve">
@@ -316,7 +313,7 @@
   <data name="LeftMarginLabel.Text" xml:space="preserve">
     <value>左方向の余白</value>
   </data>
-  <data name="PrintSettingPage.Text" xml:space="preserve">
+  <data name="PrintSettingPageCommand.Content" xml:space="preserve">
     <value>印刷設定</value>
   </data>
   <data name="RightMarginLabel.Text" xml:space="preserve">
@@ -344,7 +341,7 @@
   <data name="SupportButton.Content" xml:space="preserve">
     <value>ヘルプとサポート</value>
   </data>
-  <data name="AboutPageCommand.Text" xml:space="preserve">
+  <data name="AboutPageCommand.Content" xml:space="preserve">
     <value>このアプリについて</value>
   </data>
   <data name="VersionText" xml:space="preserve">

@@ -280,18 +280,6 @@
           <source>スペースで字下げを行う</source>
           <target state="translated">Indent by space</target>
         </trans-unit>
-        <trans-unit id="FileTypesFlyout.Text" translate="yes" xml:space="preserve">
-          <source>ファイルタイプ</source>
-          <target state="translated">FileType</target>
-        </trans-unit>
-        <trans-unit id="GlobalSettingFlyout.Text" translate="yes" xml:space="preserve">
-          <source>グローバル設定</source>
-          <target state="translated">Global Setting</target>
-        </trans-unit>
-        <trans-unit id="PrintSettingPage.Text" translate="yes" xml:space="preserve">
-          <source>印刷設定</source>
-          <target state="translated">Print Setting</target>
-        </trans-unit>
         <trans-unit id="InchiLabel" translate="yes" xml:space="preserve">
           <source>※余白の単位はインチです</source>
           <target state="translated">※A unit of padding is inch</target>
@@ -402,14 +390,6 @@
           <target state="translated">Save as encoding
 </target>
         </trans-unit>
-        <trans-unit id="FlieTypeDetailFlyout.Text" translate="yes" xml:space="preserve">
-          <source>ファイルタイプの設定</source>
-          <target state="translated">FileType Setting</target>
-        </trans-unit>
-        <trans-unit id="AboutPageCommand.Text" translate="yes" xml:space="preserve">
-          <source>このアプリについて</source>
-          <target state="translated">About This App</target>
-        </trans-unit>
         <trans-unit id="OpenLocalButton.Text" translate="yes" xml:space="preserve">
           <source>ファイルを開く...</source>
           <target state="translated">Open File...</target>
@@ -441,6 +421,22 @@
         <trans-unit id="EnableSyntaxHilight.Header" translate="yes" xml:space="preserve">
           <source>シンタックスハイライトを有効にする</source>
           <target state="translated">Enable Syntax Hilight</target>
+        </trans-unit>
+        <trans-unit id="FileTypesPageCommand.Content" translate="yes" xml:space="preserve">
+          <source>ファイルタイプ</source>
+          <target state="translated">File Type</target>
+        </trans-unit>
+        <trans-unit id="GlobalSettingPageCommand.Content" translate="yes" xml:space="preserve">
+          <source>グローバル設定</source>
+          <target state="translated">Global Setting</target>
+        </trans-unit>
+        <trans-unit id="PrintSettingPageCommand.Content" translate="yes" xml:space="preserve">
+          <source>印刷設定</source>
+          <target state="translated">Print Setting</target>
+        </trans-unit>
+        <trans-unit id="AboutPageCommand.Content" translate="yes" xml:space="preserve">
+          <source>このアプリについて</source>
+          <target state="translated">About</target>
         </trans-unit>
       </group>
     </body>

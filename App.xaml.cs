@@ -83,7 +83,7 @@ namespace FooEditor.UWP
             MainPage main = (MainPage)this.Shell;
             await main.Init(null, false, this.SessionStateService.SessionState);
             //何でもいいので適当なページを遷移させておく
-            this.NavigationService.Navigate("About", null);
+            this.NavigationService.Navigate("Setting", null);
         }
 
         protected override async Task OnActivateApplicationAsync(IActivatedEventArgs args)

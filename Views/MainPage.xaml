@@ -68,15 +68,7 @@
                     <AppBarButton Icon="List" x:Uid="OutlineTree" Command="{Binding OpenOutlineCommand}" />
                     <AppBarButton x:Uid="Snipeet" Command="{Binding OpenSnipeetCommand}">
                     </AppBarButton>
-                    <AppBarButton Icon="Setting" x:Uid="SettingButton">
-                        <AppBarButton.Flyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem x:Uid="GlobalSettingFlyout" Command="{Binding GlobalSettingCommand}"/>
-                                <MenuFlyoutItem x:Uid="FileTypesFlyout" Command="{Binding FileTypeSettingCommand}"/>
-                                <MenuFlyoutItem x:Uid="PrintSettingPage" Command="{Binding PrintSettingCommand}"/>
-                                <MenuFlyoutItem x:Uid="AboutPageCommand" Command="{Binding AboutPageCommand}"/>
-                            </MenuFlyout>
-                        </AppBarButton.Flyout>
+                    <AppBarButton Icon="Setting" x:Uid="SettingButton" Command="{Binding OpenSettingPageCommand}">
                     </AppBarButton>
                 </CommandBar.SecondaryCommands>
             </CommandBar>

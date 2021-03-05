@@ -382,46 +382,12 @@ namespace FooEditor.UWP.ViewModels
                 });
             }
         }
-
-        public DelegateCommand<object> GlobalSettingCommand
+        public DelegateCommand<object> OpenSettingPageCommand
         {
             get
             {
                 return new DelegateCommand<object>((s) => {
-                    NavigationService.Navigate("GlobalSetting", null);
-                    this.IsNavPaneOpen = true;
-                });
-            }
-        }
-
-        public DelegateCommand<object> FileTypeSettingCommand
-        {
-            get
-            {
-                return new DelegateCommand<object>((s) => {
-                    NavigationService.Navigate("FileTypes", null);
-                    this.IsNavPaneOpen = true;
-                });
-            }
-        }
-
-        public DelegateCommand<object> PrintSettingCommand
-        {
-            get
-            {
-                return new DelegateCommand<object>((s) => {
-                    NavigationService.Navigate("PrintSettings", null);
-                    this.IsNavPaneOpen = true;
-                });
-            }
-        }
-
-        public DelegateCommand<object> AboutPageCommand
-        {
-            get
-            {
-                return new DelegateCommand<object>((s) => {
-                    NavigationService.Navigate("About", null);
+                    NavigationService.Navigate("Setting", null);
                     this.IsNavPaneOpen = true;
                 });
             }

@@ -219,15 +219,6 @@
   <data name="IndentBySpace.Header" xml:space="preserve">
     <value>Indent by space</value>
   </data>
-  <data name="FileTypesFlyout.Text" xml:space="preserve">
-    <value>FileType</value>
-  </data>
-  <data name="GlobalSettingFlyout.Text" xml:space="preserve">
-    <value>Global Setting</value>
-  </data>
-  <data name="PrintSettingPage.Text" xml:space="preserve">
-    <value>Print Setting</value>
-  </data>
   <data name="InchiLabel" xml:space="preserve">
     <value>※A unit of padding is inch</value>
   </data>
@@ -311,12 +302,6 @@
     <value>Save as encoding
 </value>
   </data>
-  <data name="FlieTypeDetailFlyout.Text" xml:space="preserve">
-    <value>FileType Setting</value>
-  </data>
-  <data name="AboutPageCommand.Text" xml:space="preserve">
-    <value>About This App</value>
-  </data>
   <data name="OpenLocalButton.Text" xml:space="preserve">
     <value>Open File...</value>
   </data>
@@ -340,5 +325,17 @@
   </data>
   <data name="EnableSyntaxHilight.Header" xml:space="preserve">
     <value>Enable Syntax Hilight</value>
+  </data>
+  <data name="FileTypesPageCommand.Content" xml:space="preserve">
+    <value>File Type</value>
+  </data>
+  <data name="GlobalSettingPageCommand.Content" xml:space="preserve">
+    <value>Global Setting</value>
+  </data>
+  <data name="PrintSettingPageCommand.Content" xml:space="preserve">
+    <value>Print Setting</value>
+  </data>
+  <data name="AboutPageCommand.Content" xml:space="preserve">
+    <value>About</value>
   </data>
 </root>

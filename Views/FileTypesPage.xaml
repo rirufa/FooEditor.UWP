@@ -11,7 +11,6 @@
     xmlns:prism="using:Prism.Windows.Mvvm"
     prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel Margin="30,30,30,30">
-        <TextBlock x:Uid="FileTypesFlyout" Style="{StaticResource TitleTextBlockStyle}"/>
         <ListView Grid.Row="1" ItemsSource="{Binding FileTypeCollection}" Name="FileTypeList">
             <ListView.ItemTemplate>
                 <DataTemplate>

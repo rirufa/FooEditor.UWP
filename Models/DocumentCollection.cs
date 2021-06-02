@@ -229,7 +229,7 @@ namespace FooEditor.UWP.Models
                     var snapshot = new DocumentCollection(this);
                     DataContractSerializer serializer = new DataContractSerializer(typeof(DocumentCollection));
                     serializer.WriteObject(fs, snapshot);
-                    foreach (var doc in this)
+                    foreach (var doc in snapshot)
                     {
                         await doc.DocumentModel.SaveCurrentFile();
                     }

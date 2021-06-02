@@ -73,7 +73,9 @@
                     </AppBarButton>
                 </CommandBar.SecondaryCommands>
             </CommandBar>
-            <muxc:TabView x:Name="DocumentList" Grid.Row="1" TabItemsSource="{Binding DocumentList}" SelectedItem="{Binding CurrentDocument,Mode=TwoWay}" Background="#FFE6E6E6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AddTabButtonCommand="{Binding AddDocumentCommand}">
+            <muxc:TabView x:Name="DocumentList" Grid.Row="1" TabItemsSource="{Binding DocumentList}" SelectedItem="{Binding CurrentDocument,Mode=TwoWay}"
+                          Background="#FFE6E6E6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AddTabButtonCommand="{Binding AddDocumentCommand}"
+                          CanDrag="False" CanDragTabs="False" CanReorderTabs="False">
                 <muxc:TabView.TabItemTemplate>
                     <DataTemplate>
                         <muxc:TabViewItem CloseRequested="TabViewItem_CloseRequested">

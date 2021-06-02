@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:foo="using:FooEditEngine.UWP"
     xmlns:prism="using:Prism.Windows.Mvvm"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     prism:ViewModelLocator.AutoWireViewModel="True"
     Name="MainWindow"
     mc:Ignorable="d">
@@ -72,39 +73,25 @@
                     </AppBarButton>
                 </CommandBar.SecondaryCommands>
             </CommandBar>
-            <Pivot x:Name="DocumentList" Grid.Row="1" ItemsSource="{Binding DocumentList}" SelectedItem="{Binding CurrentDocument,Mode=TwoWay}" Background="#FFE6E6E6">
-                <Pivot.Resources>
-                    <Style TargetType="PivotHeaderItem" BasedOn="{StaticResource CustomePivotHeaderStyle}"/>
-                    <Style TargetType="Pivot" BasedOn="{StaticResource CustomPivotStyle}"/>
-                </Pivot.Resources>
-                <Pivot.HeaderTemplate>
+            <muxc:TabView x:Name="DocumentList" Grid.Row="1" TabItemsSource="{Binding DocumentList}" SelectedItem="{Binding CurrentDocument,Mode=TwoWay}" Background="#FFE6E6E6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AddTabButtonCommand="{Binding AddDocumentCommand}">
+                <muxc:TabView.TabItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <ProgressRing IsActive="True" Width="16" Height="16" Visibility="{Binding IsProgressNow,Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                            <TextBlock Text="{Binding Title}" TextAlignment="Center" Margin="10,7,0,4" ToolTipService.ToolTip="{Binding FilePath}"/>
-                            <Ellipse Fill="Black" Width="7" Height="7" Margin="5,0,0,0" Visibility="{Binding Dirty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                            <AppBarButton Icon="Cancel" Command="{Binding DataContext.RemoveDocumentCommand,ElementName=MainWindow}" CommandParameter="{Binding}">
-                                <AppBarButton.Resources>
-                                    <Style TargetType="AppBarButton" BasedOn="{StaticResource CustomAppBarButtonStyle}"/>
-                                </AppBarButton.Resources>
-                            </AppBarButton>
-                        </StackPanel>
-                    </DataTemplate>
-                </Pivot.HeaderTemplate>
-                <Pivot.ItemContainerStyle>
-                    <Style TargetType="PivotItem">
-                        <Setter Property="Margin"
-                    Value="0" />
-                    </Style>
-                </Pivot.ItemContainerStyle>
-                <Pivot.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <foo:FooTextBox 
+                        <muxc:TabViewItem CloseRequested="TabViewItem_CloseRequested">
+                            <muxc:TabViewItem.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <ProgressRing IsActive="True" Width="16" Height="16" Visibility="{Binding IsProgressNow,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                        <TextBlock Text="{Binding Title}" TextAlignment="Center" Margin="10,7,0,4" ToolTipService.ToolTip="{Binding FilePath}"/>
+                                        <Ellipse Fill="Black" Width="7" Height="7" Margin="5,0,0,0" Visibility="{Binding Dirty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </muxc:TabViewItem.HeaderTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <foo:FooTextBox 
                             Name="Textbox" Grid.Row="0"
                             Document="{Binding DocumentModel.Document}"
                             FoldingStrategy="{Binding FoldingStrategy}" Hilighter="{Binding Hilighter}"
@@ -112,19 +99,19 @@
                             Foreground="{Binding Foreground}" URL="{Binding URL}"
                             Comment="{Binding Comment}" Keyword1="{Binding Keyword1}"
                             Keyword2="{Binding Keyword2}" Literal="{Binding Literal}">
-                            </foo:FooTextBox>
-                            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                <TextBlock Text="{Binding CaretPostion,ElementName=Textbox,Converter={StaticResource TextPointConverter}}"
-                       Margin="0,0,10,0"/>
-                                <TextBlock Text="{Binding MagnificationPower,ElementName=Textbox,Converter={StaticResource RateConverter}}" Margin="0,0,10,0"/>
-                                <TextBlock Text="{Binding Encode.WebName}" Margin="0,0,10,0"/>
-                                <TextBlock Text="{Binding LineFeed}" Margin="0,0,10,0"/>
-                                <TextBlock Text="{Binding DataContext.StatusMessage,ElementName=MainWindow}"/>
-                            </StackPanel>
-                        </Grid>
+                                </foo:FooTextBox>
+                                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                    <TextBlock Text="{Binding CaretPostion,ElementName=Textbox,Converter={StaticResource TextPointConverter}}" Margin="0,0,10,0"/>
+                                    <TextBlock Text="{Binding MagnificationPower,ElementName=Textbox,Converter={StaticResource RateConverter}}" Margin="0,0,10,0"/>
+                                    <TextBlock Text="{Binding Encode.WebName}" Margin="0,0,10,0"/>
+                                    <TextBlock Text="{Binding LineFeed}" Margin="0,0,10,0"/>
+                                    <TextBlock Text="{Binding DataContext.StatusMessage,ElementName=MainWindow}"/>
+                                </StackPanel>
+                            </Grid>
+                        </muxc:TabViewItem>
                     </DataTemplate>
-                </Pivot.ItemTemplate>
-            </Pivot>
+                </muxc:TabView.TabItemTemplate>
+            </muxc:TabView>
         </Grid>
     </SplitView>
 

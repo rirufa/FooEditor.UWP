@@ -182,5 +182,10 @@ namespace FooEditor.UWP.Views
 
         }
 
+        private void TabViewItem_CloseRequested(Microsoft.UI.Xaml.Controls.TabViewItem sender, Microsoft.UI.Xaml.Controls.TabViewTabCloseRequestedEventArgs args)
+        {
+            MainPageViewModel vm = this.DataContext as MainPageViewModel;
+            vm.RemoveDocumentCommand.Execute(args.Item);
+        }
     }
 }

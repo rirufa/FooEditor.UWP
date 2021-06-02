@@ -5,4 +5,7 @@
     xmlns:local="using:FooEditor.UWP"
     xmlns:unity="using:Prism.Unity.Windows" 
     RequestedTheme="Light">
+    <unity:PrismUnityApplication.Resources>
+        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+    </unity:PrismUnityApplication.Resources>
 </unity:PrismUnityApplication>

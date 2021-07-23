@@ -69,12 +69,18 @@ namespace FooEditor.UWP.Views
             t.Wait();
         }
 
+
+        bool _inited = false;
         public async Task Init(object param, bool require_restore, Dictionary<string, object> viewModelState)
         {
             //VM内で追加する設定が反映されないので、ここで追加する
             MainPageViewModel vm = this.DataContext as MainPageViewModel;
-            PrintManager.GetForCurrentView().PrintTaskRequested += MainPage_PrintTaskRequested;
-            Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
+            if(_inited == false)
+            {
+                PrintManager.GetForCurrentView().PrintTaskRequested += MainPage_PrintTaskRequested;
+                Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
+                _inited = true;
+            }
             await vm.Init(param, require_restore, viewModelState);
         }
 
@@ -83,6 +89,7 @@ namespace FooEditor.UWP.Views
             MainPageViewModel vm = this.DataContext as MainPageViewModel;
             PrintManager.GetForCurrentView().PrintTaskRequested -= MainPage_PrintTaskRequested;
             Window.Current.CoreWindow.KeyUp -= CoreWindow_KeyUp;
+            _inited = false;
             await vm.Suspend(viewModelState, suspending);            
         }
 

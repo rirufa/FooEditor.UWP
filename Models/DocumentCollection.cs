@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Threading;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.AccessCache;
@@ -43,6 +44,8 @@ namespace FooEditor.UWP.Models
             this.ActiveDocumentChanged += (s, e) => { };
             this.CollectionChanged += (s, e) => { };
             this.PropertyChanged += (s, e) => { };
+            _SavingChanel = Channel.CreateUnbounded<object>();
+            _SaveDocumentCollectionThread = SaveDocumentCollectionWorker();
         }
 
         static DocumentCollection _Instance;
@@ -217,23 +220,36 @@ namespace FooEditor.UWP.Models
         }
 
         public static string collection_name = "DocumentCollection.xml";
-
         public async Task SaveDocumentCollection()
         {
-            if (this.Count > 0 && this.hasDirtyDoc)
+            await _SavingChanel.Writer.WriteAsync(null);
+        }
+
+        Channel<object> _SavingChanel = Channel.CreateUnbounded<object>();
+        Task _SaveDocumentCollectionThread;
+
+        async Task SaveDocumentCollectionWorker()
+        {
+            while (await _SavingChanel.Reader.WaitToReadAsync())
             {
-                FileModel file = await FileModel.CreateFileModel(collection_name, true);
-                using (Stream fs = await file.GetWriteStreamAsync())
+                while(_SavingChanel.Reader.TryRead(out var item))
                 {
-                    //タイミングによってはスナップショットを取らないと落ちる
-                    var snapshot = new DocumentCollection(this);
-                    DataContractSerializer serializer = new DataContractSerializer(typeof(DocumentCollection));
-                    serializer.WriteObject(fs, snapshot);
-                    foreach (var doc in snapshot)
+                    if (this.Count > 0 && this.hasDirtyDoc)
                     {
-                        await doc.DocumentModel.SaveCurrentFile();
+                        FileModel file = await FileModel.CreateFileModel(collection_name, true);
+                        using (Stream fs = await file.GetWriteStreamAsync())
+                        {
+                            //タイミングによってはスナップショットを取らないと落ちる
+                            var snapshot = new DocumentCollection(this);
+                            DataContractSerializer serializer = new DataContractSerializer(typeof(DocumentCollection));
+                            serializer.WriteObject(fs, snapshot);
+                            foreach (var doc in snapshot)
+                            {
+                                await doc.DocumentModel.SaveCurrentFile();
+                            }
+                            System.Diagnostics.Debug.WriteLine("AutoSaved");
+                        }
                     }
-                    System.Diagnostics.Debug.WriteLine("AutoSaved");
                 }
             }
         }
@@ -252,5 +268,6 @@ namespace FooEditor.UWP.Models
                 }
             }
         }
+
     }
 }

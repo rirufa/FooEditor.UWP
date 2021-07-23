@@ -111,10 +111,7 @@ namespace FooEditor.UWP.ViewModels
         {
             if(AppSettings.Current.EnableAutoSave)
             {
-                //再入されるとまずい
-                this.timer.Stop();
                 await this.DocumentList.SaveDocumentCollection();
-                this.timer.Start();
             }
             if (this.IsRequierDelayCleanStatusMessage)
             {

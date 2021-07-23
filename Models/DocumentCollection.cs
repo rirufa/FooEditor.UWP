@@ -44,7 +44,7 @@ namespace FooEditor.UWP.Models
             this.ActiveDocumentChanged += (s, e) => { };
             this.CollectionChanged += (s, e) => { };
             this.PropertyChanged += (s, e) => { };
-            _SavingChanel = Channel.CreateUnbounded<object>();
+            _SavingChanel = Channel.CreateUnbounded<object>(new UnboundedChannelOptions() { SingleReader = true, SingleWriter = true} );
             _SaveDocumentCollectionThread = SaveDocumentCollectionWorker();
         }
 
@@ -247,7 +247,6 @@ namespace FooEditor.UWP.Models
                             {
                                 await doc.DocumentModel.SaveCurrentFile();
                             }
-                            System.Diagnostics.Debug.WriteLine("AutoSaved");
                         }
                     }
                 }

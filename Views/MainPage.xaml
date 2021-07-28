@@ -37,7 +37,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <CommandBar Grid.Row="0" Name="CommandBar">
+            <CommandBar Grid.Row="0" Name="CommandBar" Background="#FFE6E6E6" >
                 <AppBarButton Icon="Add" Command="{Binding AddDocumentCommand}" x:Uid="AddButton"/>
                 <AppBarButton Icon="OpenFile" x:Uid="OpenButton">
                     <AppBarButton.Flyout>

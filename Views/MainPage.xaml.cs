@@ -56,10 +56,9 @@ namespace FooEditor.UWP.Views
                 PrintTask task = null;
                 task = args.Request.CreatePrintTask(vm.CurrentDocument.Title, (e) =>
                 {
-                    e.SetSource(source);
+                    e.SetSource(source.PrintDocument);
                 });
                 task.Completed += (s, e) => {
-                    source.Dispose();
                     System.Diagnostics.Debug.WriteLine("finshed printing");
                 };
                 PrintOptionBuilder<DocumentSource> builder = new PrintOptionBuilder<DocumentSource>(source);

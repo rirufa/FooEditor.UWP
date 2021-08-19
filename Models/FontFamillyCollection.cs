@@ -1,26 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using SharpDX.DirectWrite;
+using Microsoft.Graphics.Canvas.Text;
 namespace FooEditor.UWP.Models
 {
     static class FontFamillyCollection
     {
         public static IEnumerable<string> GetFonts()
         {
-            var factory = new Factory();
-            var fontCollection = factory.GetSystemFontCollection(new SharpDX.Mathematics.Interop.RawBool(false));
-            var familyCount = fontCollection.FontFamilyCount;
+            var fontCollection = CanvasTextFormat.GetSystemFontFamilies();
+            var familyCount = fontCollection.Length;
 
             for (int i = 0; i < familyCount; i++)
             {
-                var fontFamily = fontCollection.GetFontFamily(i);
-                var familyNames = fontFamily.FamilyNames;
-                int index;
-
-                if (!familyNames.FindLocaleName(CultureInfo.CurrentCulture.Name, out index))
-                    familyNames.FindLocaleName("en-us", out index);
-
-                yield return familyNames.GetString(index);
+                yield return fontCollection[i];
             }
         }
     }

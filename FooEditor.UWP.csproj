@@ -377,7 +377,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FooEditEngnine.UWP">
-      <Version>1.1.3.20</Version>
+      <Version>1.1.3.21</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
       <Version>4.3.0</Version>

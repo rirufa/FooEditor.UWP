@@ -79,11 +79,14 @@
                 <muxc:TabView.TabItemTemplate>
                     <DataTemplate>
                         <muxc:TabViewItem CloseRequested="TabViewItem_CloseRequested">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="{Binding FilePath}" TextAlignment="Center" Margin="10,7,0,4"/>
+                            </ToolTipService.ToolTip>
                             <muxc:TabViewItem.HeaderTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <ProgressRing IsActive="True" Width="16" Height="16" Visibility="{Binding IsProgressNow,Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                                        <TextBlock Text="{Binding Title}" TextAlignment="Center" Margin="10,7,0,4" ToolTipService.ToolTip="{Binding FilePath}"/>
+                                        <TextBlock Text="{Binding Title}" TextAlignment="Center" Margin="10,7,0,4"/>
                                         <Ellipse Fill="Black" Width="7" Height="7" Margin="5,0,0,0" Visibility="{Binding Dirty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                     </StackPanel>
                                 </DataTemplate>

@@ -33,10 +33,18 @@ namespace FooEditor.UWP.Models
 
     public class DocumentModel : BindableBase
     {
+        string _CurrentFilePath;
         public string CurrentFilePath
         {
-            get;
-            set;
+            get
+            {
+                return this._CurrentFilePath;
+            }
+            set
+            {
+                this._CurrentFilePath = value;
+                RaisePropertyChanged();
+            }
         }
         public string Title
         {

@@ -78,10 +78,7 @@
                           CanDrag="False" CanDragTabs="False" CanReorderTabs="False">
                 <muxc:TabView.TabItemTemplate>
                     <DataTemplate>
-                        <muxc:TabViewItem CloseRequested="TabViewItem_CloseRequested">
-                            <ToolTipService.ToolTip>
-                                <TextBlock Text="{Binding FilePath}" TextAlignment="Center" Margin="10,7,0,4"/>
-                            </ToolTipService.ToolTip>
+                        <muxc:TabViewItem CloseRequested="TabViewItem_CloseRequested" ToolTipService.ToolTip="{Binding FilePath}">
                             <muxc:TabViewItem.HeaderTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">

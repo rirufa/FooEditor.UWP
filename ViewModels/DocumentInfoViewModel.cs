@@ -247,10 +247,18 @@ namespace FooEditor.UWP.ViewModels
 
         private void _model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "IsDirty")
-                this.RaisePropertyChanged("Dirty");
-            else
-                this.RaisePropertyChanged(e.PropertyName);
+            switch(e.PropertyName)
+            {
+                case "CurrentFilePath":
+                    this.RaisePropertyChanged("FilePath");
+                    break;
+                case "IsDirty":
+                    this.RaisePropertyChanged("Dirty");
+                    break;
+                default:
+                    this.RaisePropertyChanged(e.PropertyName);
+                    break;
+            }
         }
 
         private void _model_DocumentTypeChanged(object sender, DocumentTypeEventArg e)

@@ -412,6 +412,7 @@ namespace FooEditor.UWP.ViewModels
             get
             {
                 return new DelegateCommand<object>((s) => {
+                    this.NavigationService.ClearHistory();
                     this.IsNavPaneOpen = false;
                 });
             }

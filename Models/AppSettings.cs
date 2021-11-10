@@ -28,9 +28,9 @@ namespace FooEditor.UWP.Models
         protected override void SetDefalutSetting()
         {
             if (GetGlobalEditorProperty("FontFamily") == null)
-                SetGlobalEditorProperty("FontFamily", "Calibri");
+                SetGlobalEditorProperty("FontFamily", "Cambria");
             if (GetGlobalEditorProperty("FontSize") == null)
-                SetGlobalEditorProperty("FontSize", 18.0);
+                SetGlobalEditorProperty("FontSize", 16.0);
             if (GetGlobalEditorProperty("TabChar") == null)
                 SetGlobalEditorProperty("TabChar", 4);
             if (GetGlobalEditorProperty("IsRTL") == null)
@@ -118,6 +118,7 @@ namespace FooEditor.UWP.Models
                 _FileTypeCollection.Add(fileType);
                 fileType = new FileType("JavaScript", "javascript.xml");
                 fileType.ExtensionCollection.Add(".js");
+                _FileTypeCollection.Add(fileType);
                 fileType = new FileType("CoffeeScript", "coffeescript.xml");
                 fileType.ExtensionCollection.Add(".coffee");
                 _FileTypeCollection.Add(fileType);

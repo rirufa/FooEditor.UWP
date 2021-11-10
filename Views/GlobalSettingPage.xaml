@@ -17,27 +17,27 @@
         <StackPanel x:Name="FlyoutContent" Margin="30,30,30,30">
             <TextBlock x:Uid="GlobalSettingFlyout" Style="{StaticResource TitleTextBlockStyle}"/>
             <TextBlock x:Uid="FontFamilyLabel" Margin="0,0,0,10"/>
-            <ComboBox Name="FontFamilyCollection" Margin="0,0,0,10" ItemsSource="{Binding FontFamilyList}" SelectedItem="{Binding Setting.FontFamily,Mode=TwoWay}"/>
+            <ComboBox Name="FontFamilyCollection" Margin="0,0,0,20" ItemsSource="{Binding FontFamilyList}" SelectedItem="{Binding Setting.FontFamily,Mode=TwoWay}"/>
             <TextBlock x:Uid="FontSizeLabel" Margin="0,0,0,10"/>
-            <Slider Value="{Binding Setting.FontSize,Mode=TwoWay}" Minimum="1" Maximum="72"/>
+            <Slider Margin="0,0,0,20" Value="{Binding Setting.FontSize,Mode=TwoWay}" Minimum="1" Maximum="72"/>
             <TextBlock x:Uid="TabCharLabel" Margin="0,0,0,10"/>
-            <Slider Value="{Binding Setting.TabChar,Mode=TwoWay}" Minimum="1" Maximum="32"/>
-            <ToggleSwitch IsOn="{Binding Setting.IsRTL,Mode=TwoWay}" x:Uid="EnableRTL" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.ShowRuler,Mode=TwoWay}" x:Uid="ShowRuler" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.ShowLineNumber,Mode=TwoWay}" x:Uid="ShowLineNumber" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.ShowLineMarker,Mode=TwoWay}" x:Uid="ShowCaretLine" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.ShowFullSpace,Mode=TwoWay}" x:Uid="ShowFullSpace" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.ShowTab,Mode=TwoWay}" x:Uid="ShowTab" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.ShowLineBreak,Mode=TwoWay}" x:Uid="ShowLineBreak" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.ShowFoundPattern,Mode=TwoWay}" x:Uid="ShowFoundPattern" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.IndentBySpace,Mode=TwoWay}" x:Uid="IndentBySpace" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.EnableAutoIndent,Mode=TwoWay}" x:Uid="EnableAutoIndent" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.EnableAutoComplete,Mode=TwoWay}" x:Uid="EnableAutoComplete" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.EnableAutoSave,Mode=TwoWay}" x:Uid="EnableAutoSave" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.EnableSyntaxHilight,Mode=TwoWay}" x:Uid="EnableSyntaxHilight" HorizontalAlignment="Stretch"/>
-            <ToggleSwitch IsOn="{Binding Setting.EnableGenerateFolding,Mode=TwoWay}" x:Uid="EnableGenerateFolding" HorizontalAlignment="Stretch"/>
+            <Slider Margin="0,0,0,20" Value="{Binding Setting.TabChar,Mode=TwoWay}" Minimum="1" Maximum="32"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.IsRTL,Mode=TwoWay}" x:Uid="EnableRTL" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.ShowRuler,Mode=TwoWay}" x:Uid="ShowRuler" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.ShowLineNumber,Mode=TwoWay}" x:Uid="ShowLineNumber" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.ShowLineMarker,Mode=TwoWay}" x:Uid="ShowCaretLine" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.ShowFullSpace,Mode=TwoWay}" x:Uid="ShowFullSpace" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.ShowTab,Mode=TwoWay}" x:Uid="ShowTab" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.ShowLineBreak,Mode=TwoWay}" x:Uid="ShowLineBreak" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.ShowFoundPattern,Mode=TwoWay}" x:Uid="ShowFoundPattern" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.IndentBySpace,Mode=TwoWay}" x:Uid="IndentBySpace" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.EnableAutoIndent,Mode=TwoWay}" x:Uid="EnableAutoIndent" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.EnableAutoComplete,Mode=TwoWay}" x:Uid="EnableAutoComplete" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.EnableAutoSave,Mode=TwoWay}" x:Uid="EnableAutoSave" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.EnableSyntaxHilight,Mode=TwoWay}" x:Uid="EnableSyntaxHilight" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding Setting.EnableGenerateFolding,Mode=TwoWay}" x:Uid="EnableGenerateFolding" HorizontalAlignment="Stretch"/>
             <TextBlock x:Uid="LineBreakLabel" Margin="0,0,0,10"/>
-            <ComboBox Name="LineBreakMethodCollection" ItemsSource="{Binding LineBreakMethodList}" SelectedItem="{Binding Setting.LineBreakMethod,Mode=TwoWay}" Margin="0,0,0,10">
+            <ComboBox Name="LineBreakMethodCollection" ItemsSource="{Binding LineBreakMethodList}" SelectedItem="{Binding Setting.LineBreakMethod,Mode=TwoWay}" Margin="0,0,0,20">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Converter={StaticResource LineBreakMethodConverter}}"/>
@@ -45,9 +45,9 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <TextBlock x:Uid="LineBreakCountLabel" Margin="0,0,0,10"/>
-            <TextBox Text="{Binding Setting.LineBreakCount,Mode=TwoWay}" Margin="0,0,0,10"/>
+            <TextBox Text="{Binding Setting.LineBreakCount,Mode=TwoWay}" Margin="0,0,0,20"/>
             <TextBlock x:Uid="DefaultEncodeTypeLabel" Margin="0,10,0,0"/>
-            <ComboBox ItemsSource="{Binding EncodeCollection}" Width="150" SelectedItem="{Binding Setting.DefaultEncoding,Mode=TwoWay}" Margin="0,10,0,0">
+            <ComboBox ItemsSource="{Binding EncodeCollection}" Width="150" SelectedItem="{Binding Setting.DefaultEncoding,Mode=TwoWay}" Margin="0,10,0,20">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding WebName}"/>

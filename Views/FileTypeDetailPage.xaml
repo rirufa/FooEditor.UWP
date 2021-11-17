@@ -16,6 +16,8 @@
     </Page.Resources>
     <ScrollViewer>
         <StackPanel Margin="30,0,30,0" Name="FlyLayoutCotent">
+            <TextBlock x:Uid="DocumentTypeLabel" Margin="0,0,0,10"/>
+            <TextBox Text="{Binding FileType.DocumentType,Mode=TwoWay}" Margin="0,0,0,20"/>
             <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="NoInherit" HorizontalAlignment="Stretch"/>
             <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding FileType.ShowRuler,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="ShowRuler" HorizontalAlignment="Stretch"/>
             <ToggleSwitch Margin="0,0,0,20" IsOn="{Binding FileType.ShowLineNumber,Mode=TwoWay}" IsEnabled="{Binding FileType.NoInherit,Mode=TwoWay}" x:Uid="ShowLineNumber" HorizontalAlignment="Stretch"/>

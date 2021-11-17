@@ -15,11 +15,16 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding DocumentTypeName}" Width="150"/>
+                        <TextBlock Text="{Binding DocumentTypeName}" Width="100"/>
                         <Button x:Uid="ShowDetailButton" Command="{Binding ElementName=FileTypeList,Path=DataContext.ShowDetailCommand}" CommandParameter="{Binding}"/>
+                        <Button x:Uid="RemoveButton" Command="{Binding ElementName=FileTypeList,Path=DataContext.RemoveCommand}" CommandParameter="{Binding}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+            <TextBox Width="100" Text="{Binding NewFileType,Mode=TwoWay}"/>
+            <Button x:Uid="AddExtentionButton" Command="{Binding AddCommand}" Margin="0,0,0,20"/>
+        </StackPanel>
     </StackPanel>
 </Page>

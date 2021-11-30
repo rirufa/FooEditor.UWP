@@ -40,6 +40,8 @@ namespace FooEditor.UWP
             //http://www.atmarkit.co.jp/ait/articles/1509/30/news039.html
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
+            this.RestoreNavigationStateOnResume = false;    //設定画面を表示するだけなので状態を保存しなくてもいい
+
             ExtendedSplashScreenFactory = (splashscreen) => new ExtendedSplashScreen(splashscreen);
 
 #if !DEBUG

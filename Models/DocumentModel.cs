@@ -156,8 +156,6 @@ namespace FooEditor.UWP.Models
 
         AutoIndent autoIndent = new AutoIndent();
 
-        string KeywordFolderName = "Keywords";
-
         public async Task SetDocumentType(FileType type)
         {
             this.DocumentType = type;
@@ -178,10 +176,8 @@ namespace FooEditor.UWP.Models
                 return;
             }
 
-            await FolderModel.CopyFilesFromInstalledFolderToLocalSetting(KeywordFolderName);
-
             FileModel file;
-            FolderModel keywordFolder = await FolderModel.TryGetFolderFromAppSetting(KeywordFolderName);
+            FolderModel keywordFolder = await FolderModel.TryGetFolderFromAppSetting(ViewModels.MainPageViewModel.KeywordFolderName);
             if (keywordFolder == null)
             {
                 this.DocumentTypeChanged(this, new DocumentTypeEventArg(type));
@@ -260,7 +256,7 @@ namespace FooEditor.UWP.Models
                 {
                     enc = AppSettings.Current.DefaultEncoding;
                 }
-                else if(enc == Encoding.ASCII)
+                else if(enc == Encoding.ASCII || enc == null)
                 {
                     var default_enc = AppSettings.Current.DefaultEncoding;
                     //UTF32とUTF16以外はASCIIコードを含むので上位互換の奴で読み込んでも問題ない

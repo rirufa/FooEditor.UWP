@@ -40,9 +40,13 @@ namespace FooEditor.UWP.ViewModels
             this.MainViewService = mainViewService;
         }
 
+        public const string KeywordFolderName = "Keywords";
+
         public async Task Init(object param,bool require_restore , Dictionary<string, object> viewModelState)
         {
             this.DocumentList.ActiveDocumentChanged += DocumentList_ActiveDocumentChanged;
+
+            await FolderModel.CopyFilesFromInstalledFolderToLocalSetting(KeywordFolderName);
 
             //復元する必要がある
             if (require_restore)

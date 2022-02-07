@@ -19,7 +19,7 @@
     <PackageCertificateKeyFile>FooEditor.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <HockeyAppResourceId>7fc70d1f9bf64da7b9f2aa49d827b0fe</HockeyAppResourceId>
     <PackageCertificateThumbprint>
     </PackageCertificateThumbprint>

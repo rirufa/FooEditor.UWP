@@ -83,8 +83,15 @@ namespace FooEditor.UWP.ViewModels
                 {
                     foreach (string filepath in files)
                     {
-                        var file = await FileModel.GetFileModel(FileModelBuildType.AbsolutePath, filepath);
-                        await this.DocumentList.AddFromFile(file);
+                        try
+                        {
+                            var file = await FileModel.GetFileModel(FileModelBuildType.AbsolutePath, filepath);
+                            await this.DocumentList.AddFromFile(file);
+                        }
+                        catch (UnauthorizedAccessException ex)
+                        {
+                            await this.MainViewService.MakeMessageBox(ex.Message);
+                        }
                     }
                 }
             }

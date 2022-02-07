@@ -304,14 +304,21 @@ namespace FooEditor.UWP.ViewModels
             get
             {
                 return new DelegateCommand<System.Text.Encoding>(async (enc) => {
-                    if (this._doc_list.Current.DocumentModel.CurrentFilePath == null)
+                    try
                     {
-                        await SaveAs(null, enc);
+                        if (this._doc_list.Current.DocumentModel.CurrentFilePath == null)
+                        {
+                            await SaveAs(null, enc);
+                        }
+                        else
+                        {
+                            var fileModel = await FileModel.GetFileModel(FileModelBuildType.AbsolutePath, this._doc_list.Current.DocumentModel.CurrentFilePath);
+                            await SaveAs(fileModel, enc);
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        var fileModel = await FileModel.GetFileModel(FileModelBuildType.AbsolutePath, this._doc_list.Current.DocumentModel.CurrentFilePath);
-                        await SaveAs(fileModel, enc);
+                        await this.MainViewService.MakeMessageBox(ex.Message);
                     }
                 });
             }

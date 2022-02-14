@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="51377FooProject.404123402F54A" Publisher="CN=224662AF-5ED0-4C7C-8B20-13E2E5ECF61F" Version="1.25.32.0" />
+  <Identity Name="51377FooProject.404123402F54A" Publisher="CN=224662AF-5ED0-4C7C-8B20-13E2E5ECF61F" Version="1.25.33.0" />
   <mp:PhoneIdentity PhoneProductId="5ae4027c-fa57-4895-9806-b04fc4e5abfe" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>FooEditor</DisplayName>

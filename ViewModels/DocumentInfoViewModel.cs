@@ -323,6 +323,10 @@ namespace FooEditor.UWP.ViewModels
             source.Literal = ((SolidColorBrush)this.Literal).Color;
             source.Comment = ((SolidColorBrush)this.Comment).Color;
             source.Url = ((SolidColorBrush)this.URL).Color;
+            source.LineBreak = this.DocumentModel.Document.LineBreak;
+            if (source.LineBreak == LineBreakMethod.None)
+                source.LineBreak = LineBreakMethod.PageBound;
+            source.LineBreakCount = this.DocumentModel.Document.LineBreakCharCount;
             source.ParseHF = (s, e) => {
                 PrintInfomation info = new PrintInfomation() { Title = this.Title, PageNumber = e.PageNumber };
                 return EditorHelper.ParseHF(e.Original, info);

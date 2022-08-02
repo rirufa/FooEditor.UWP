@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FooEditEngine;
 using FooEditEngine.UWP;
 using EncodeDetect;
-using Prism.Mvvm;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace FooEditor.UWP.Models
 {
@@ -31,7 +31,7 @@ namespace FooEditor.UWP.Models
         }
     }
 
-    public class DocumentModel : BindableBase
+    public class DocumentModel : ObservableObject
     {
         string _CurrentFilePath;
         public string CurrentFilePath
@@ -43,13 +43,22 @@ namespace FooEditor.UWP.Models
             set
             {
                 this._CurrentFilePath = value;
-                RaisePropertyChanged();
+                this.OnPropertyChanged();
             }
         }
+
+        string _Title;
         public string Title
         {
-            get;
-            set;
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                _Title = value;
+                this.OnPropertyChanged();
+            }
         }
 
         bool _IsProgressNow;
@@ -62,7 +71,7 @@ namespace FooEditor.UWP.Models
             set
             {
                 this._IsProgressNow = value;
-                this.RaisePropertyChanged();
+                this.OnPropertyChanged();
             }
         }
 
@@ -75,7 +84,7 @@ namespace FooEditor.UWP.Models
             private set
             {
                 this.Document.Dirty = value;
-                this.RaisePropertyChanged();
+                this.OnPropertyChanged();
             }
         }
 
@@ -101,7 +110,7 @@ namespace FooEditor.UWP.Models
             set
             {
                 _Encode = value;
-                this.RaisePropertyChanged();
+                this.OnPropertyChanged();
             }
         }
 
@@ -115,7 +124,32 @@ namespace FooEditor.UWP.Models
             set
             {
                 _LineFeed = value;
-                this.RaisePropertyChanged();
+                this.OnPropertyChanged();
+            }
+        }
+
+        public IFoldingStrategy FoldingStrategy
+        {
+            get
+            {
+                return Document.LayoutLines.FoldingStrategy;
+            }
+            set
+            {
+                Document.LayoutLines.FoldingStrategy = value;
+                this.OnPropertyChanged();
+            }
+        }
+        public IHilighter Hilighter
+        {
+            get
+            {
+                return Document.LayoutLines.Hilighter;
+            }
+            set
+            {
+                Document.LayoutLines.Hilighter = value;
+                this.OnPropertyChanged();
             }
         }
 
@@ -312,6 +346,9 @@ namespace FooEditor.UWP.Models
                 await this.Document.SaveAsync(sw);
             }
             this.CurrentFilePath = file.Path;
+            this.Title = file.Name;
+            if (enc != null)
+                this.Encode = enc;
             this.IsDirty = false;
             this.hasUnAutoSavedDocument = true; //メタデータを更新する必要がある
         }

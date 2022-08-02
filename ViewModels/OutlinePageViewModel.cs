@@ -48,7 +48,7 @@ namespace FooEditor.UWP.ViewModels
         {
             var doclist = (DocumentCollection)sender;
             this.Document = doclist.Current.DocumentModel.Document;
-            this.FoldingStrategy = doclist.Current.FoldingStrategy;
+            this.FoldingStrategy = doclist.Current.DocumentModel.FoldingStrategy;
             if (this.Items != null)
                 this.Items.Clear();
         }
@@ -59,7 +59,7 @@ namespace FooEditor.UWP.ViewModels
             {
                 return new DelegateCommand<object>((s) => {
                     this.Document = this.DocumentList.Current.DocumentModel.Document;
-                    this.FoldingStrategy = this.DocumentList.Current.FoldingStrategy;
+                    this.FoldingStrategy = this.DocumentList.Current.DocumentModel.FoldingStrategy;
                     this.Items = OutlineAnalyzer.Analyze(this.FoldingStrategy, this.Document.LayoutLines, this.Document);
                 });
             }

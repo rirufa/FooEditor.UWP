@@ -171,7 +171,7 @@ namespace FooEditor.UWP.Models
         public void AddNewDocument()
         {
             var doc = new DocumentInfoViewModel();
-            doc.Title = string.Format("Untitled{0}", this.Count + 1);
+            doc.DocumentModel.Title = string.Format("Untitled{0}", this.Count + 1);
             this.AddDocument(doc);
         }
 
@@ -210,7 +210,7 @@ namespace FooEditor.UWP.Models
         {
             foreach (DocumentInfoViewModel doc_info in this)
             {
-                if (doc_info.FilePath == file_path)
+                if (doc_info.DocumentModel.CurrentFilePath == file_path)
                 {
                     this.ActiveDocument(doc_info);
                     return true;

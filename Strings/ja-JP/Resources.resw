@@ -442,4 +442,31 @@
   <data name="EnableSyntaxHilight.Header" xml:space="preserve">
     <value>シンタックスハイライトを有効にする</value>
   </data>
+  <data name="CommentColorLabel.Text" xml:space="preserve">
+    <value>コメント</value>
+  </data>
+  <data name="ControlCharColorLabel.Text" xml:space="preserve">
+    <value>コントロールコード</value>
+  </data>
+  <data name="Keyword2ColorLabel.Text" xml:space="preserve">
+    <value>キーワード２</value>
+  </data>
+  <data name="KeywordColorLabel.Text" xml:space="preserve">
+    <value>キーワード</value>
+  </data>
+  <data name="LineMarkerColorLabel.Text" xml:space="preserve">
+    <value>ラインマーカー</value>
+  </data>
+  <data name="LiteralColorLabel.Text" xml:space="preserve">
+    <value>リテラル</value>
+  </data>
+  <data name="UpdateAreaColorLabel.Text" xml:space="preserve">
+    <value>更新エリア</value>
+  </data>
+  <data name="URLColorLabel.Text" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="ForegroundColorLabel.Text" xml:space="preserve">
+    <value>文字の色</value>
+  </data>
 </root>

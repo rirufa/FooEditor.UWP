@@ -1,10 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Prism.Windows.Mvvm;
-using Prism.Commands;
-using FooEditor.UWP.Models;
 using FooEditEngine;
 using System;
+using CommunityToolkit.Mvvm.Input;
+using FooEditor.UWP.Models;
 
 namespace FooEditor.UWP.ViewModels
 {
@@ -15,7 +15,7 @@ namespace FooEditor.UWP.ViewModels
         {
             get
             {
-                return new DelegateCommand<object>(async (e) =>
+                return new RelayCommand<object>(async (e) =>
                 {
                     await Windows.System.Launcher.LaunchFolderAsync(Windows.Storage.ApplicationData.Current.LocalFolder);
                 });
@@ -64,7 +64,7 @@ namespace FooEditor.UWP.ViewModels
             set
             {
                 this._Setting = value;
-                this.RaisePropertyChanged();
+                this.OnPropertyChanged();
             }
         }
 

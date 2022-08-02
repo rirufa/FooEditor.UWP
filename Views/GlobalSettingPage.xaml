@@ -6,12 +6,24 @@
     xmlns:local="using:FooEditor.UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cwuc="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     xmlns:prism="using:Prism.Windows.Mvvm"
     prism:ViewModelLocator.AutoWireViewModel="True"
     >
     <Page.Resources>
         <local:LineBreakMethodConverter x:Name="LineBreakMethodConverter"/>
+        <Style TargetType="cwuc:ColorPickerButton" x:Key="ColorPickerStyle">
+            <Setter Property="ColorPickerStyle">
+                <Setter.Value>
+                    <Style TargetType="cwuc:ColorPicker">
+                        <Setter Property="ColorSpectrumShape" Value="Box"/>
+                        <Setter Property="IsHexInputVisible" Value="True"/>
+                        <Setter Property="IsAlphaEnabled" Value="True" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
     <ScrollViewer>
         <StackPanel x:Name="FlyoutContent" Margin="30,30,30,30">
@@ -54,6 +66,24 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <TextBlock x:Uid="ForegroundColorLabel" Margin="0,0,0,10"/>
+            <cwuc:ColorPickerButton SelectedColor="{Binding Setting.ForegroundColor,Mode=TwoWay}" Style="{StaticResource ColorPickerStyle}" Margin="0,0,0,20"/>
+            <TextBlock x:Uid="KeywordColorLabel" Margin="0,0,0,10"/>
+            <cwuc:ColorPickerButton SelectedColor="{Binding Setting.KeywordColor,Mode=TwoWay}" Style="{StaticResource ColorPickerStyle}" Margin="0,0,0,20"/>
+            <TextBlock x:Uid="Keyword2ColorLabel" Margin="0,0,0,10"/>
+            <cwuc:ColorPickerButton SelectedColor="{Binding Setting.Keyword2Color,Mode=TwoWay}" Style="{StaticResource ColorPickerStyle}" Margin="0,0,0,20"/>
+            <TextBlock x:Uid="URLColorLabel" Margin="0,0,0,10"/>
+            <cwuc:ColorPickerButton SelectedColor="{Binding Setting.URLColor,Mode=TwoWay}" Style="{StaticResource ColorPickerStyle}" Margin="0,0,0,20"/>
+            <TextBlock x:Uid="ControlCharColorLabel" Margin="0,0,0,10"/>
+            <cwuc:ColorPickerButton SelectedColor="{Binding Setting.ControlCharColor,Mode=TwoWay}" Style="{StaticResource ColorPickerStyle}" Margin="0,0,0,20"/>
+            <TextBlock x:Uid="CommentColorLabel" Margin="0,0,0,10"/>
+            <cwuc:ColorPickerButton SelectedColor="{Binding Setting.CommentColor,Mode=TwoWay}" Style="{StaticResource ColorPickerStyle}" Margin="0,0,0,20"/>
+            <TextBlock x:Uid="LiteralColorLabel" Margin="0,0,0,10"/>
+            <cwuc:ColorPickerButton SelectedColor="{Binding Setting.LiteralColor,Mode=TwoWay}" Style="{StaticResource ColorPickerStyle}" Margin="0,0,0,20"/>
+            <TextBlock x:Uid="UpdateAreaColorLabel" Margin="0,0,0,10"/>
+            <cwuc:ColorPickerButton SelectedColor="{Binding Setting.UpdateAreaColor,Mode=TwoWay}" Style="{StaticResource ColorPickerStyle}" Margin="0,0,0,20"/>
+            <TextBlock x:Uid="LineMarkerColorLabel" Margin="0,0,0,10"/>
+            <cwuc:ColorPickerButton SelectedColor="{Binding Setting.LineMarkerColor,Mode=TwoWay}" Style="{StaticResource ColorPickerStyle}" Margin="0,0,0,20"/>
             <Button x:Uid="OpenConfigureFolder" Command="{Binding OpenConfigureFolderCommand}" Margin="0,10,0,0"/>
         </StackPanel>
     </ScrollViewer>

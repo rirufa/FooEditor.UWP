@@ -54,7 +54,7 @@ namespace FooEditor.UWP.Views
                 MainPageViewModel vm = this.DataContext as MainPageViewModel;
                 var source = vm.CurrentDocument.CreatePrintDocument();
                 PrintTask task = null;
-                task = args.Request.CreatePrintTask(vm.CurrentDocument.Title, (e) =>
+                task = args.Request.CreatePrintTask(vm.CurrentDocument.DocumentModel.Title, (e) =>
                 {
                     e.SetSource(source.PrintDocument);
                 });

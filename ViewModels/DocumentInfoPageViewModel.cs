@@ -82,17 +82,17 @@ namespace FooEditor.UWP.ViewModels
         {
             get
             {
-                return this._doc_list.Current.Encode;
+                return this._doc_list.Current.DocumentModel.Encode;
             }
             set
             {
-                if (this._doc_list.Current.FilePath == null)
+                if (this._doc_list.Current.DocumentModel.CurrentFilePath == null)
                 {
-                    this._doc_list.Current.Encode = value;
+                    this._doc_list.Current.DocumentModel.Encode = value;
                     this.RaisePropertyChanged();
                     return;
                 }
-                if(this._doc_list.Current.Encode.WebName != value.WebName)
+                if(this._doc_list.Current.DocumentModel.Encode.WebName != value.WebName)
                 {
                     var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
                     var taskScheduler = TaskScheduler.FromCurrentSynchronizationContext();

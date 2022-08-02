@@ -362,9 +362,6 @@ namespace FooEditor.UWP.ViewModels
                 this.timer.Stop();
                 await this._doc_list.Current.DocumentModel.SaveFile(fileModel,enc);
                 this.timer.Start();
-                this._doc_list.Current.Title = file.Name;
-                if(enc != null)
-                    this._doc_list.Current.Encode = enc;
                 StorageApplicationPermissions.MostRecentlyUsedList.Add(file, file.Name);
 
                 var loader = new Windows.ApplicationModel.Resources.ResourceLoader();

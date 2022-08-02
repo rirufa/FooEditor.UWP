@@ -78,13 +78,13 @@
                           CanDrag="False" CanDragTabs="False" CanReorderTabs="False">
                 <muxc:TabView.TabItemTemplate>
                     <DataTemplate>
-                        <muxc:TabViewItem CloseRequested="TabViewItem_CloseRequested" ToolTipService.ToolTip="{Binding FilePath}">
+                        <muxc:TabViewItem CloseRequested="TabViewItem_CloseRequested" ToolTipService.ToolTip="{Binding DocumentModel.CurrentFilePath}">
                             <muxc:TabViewItem.HeaderTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <ProgressRing IsActive="True" Width="16" Height="16" Visibility="{Binding IsProgressNow,Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                                        <TextBlock Text="{Binding Title}" TextAlignment="Center" Margin="10,7,0,4"/>
-                                        <Ellipse Fill="Black" Width="7" Height="7" Margin="5,0,0,0" Visibility="{Binding Dirty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                        <ProgressRing IsActive="True" Width="16" Height="16" Visibility="{Binding DocumentModel.IsProgressNow,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                        <TextBlock Text="{Binding DocumentModel.Title}" TextAlignment="Center" Margin="10,7,0,4"/>
+                                        <Ellipse Fill="Black" Width="7" Height="7" Margin="5,0,0,0" Visibility="{Binding DocumentModel.IsDirty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </muxc:TabViewItem.HeaderTemplate>
@@ -94,19 +94,22 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <foo:FooTextBox 
-                            Name="Textbox" Grid.Row="0"
-                            Document="{Binding DocumentModel.Document}"
-                            FoldingStrategy="{Binding FoldingStrategy}" Hilighter="{Binding Hilighter}"
-                            FontFamily="{Binding FontFamily}" FontSize="{Binding FontSize}"
-                            Foreground="{Binding Foreground}" URL="{Binding URL}"
-                            Comment="{Binding Comment}" Keyword1="{Binding Keyword1}"
-                            Keyword2="{Binding Keyword2}" Literal="{Binding Literal}">
+                                    Name="Textbox" Grid.Row="0"
+                                    Document="{Binding DocumentModel.Document}"
+                                    FoldingStrategy="{Binding DocumentModel.FoldingStrategy}" Hilighter="{Binding DocumentModel.Hilighter}"
+                                    FontFamily="{Binding Settings.FontFamily}" FontSize="{Binding Settings.FontSize}"
+                                    Foreground="{Binding Foreground}" URL="{Binding URL}"
+                                    Comment="{Binding Comment}" Keyword1="{Binding Keyword1}"
+                                    Keyword2="{Binding Keyword2}" Literal="{Binding Literal}"
+                                    ControlChar="{Binding ControlChar}" UpdateArea="{Binding UpdateArea}"
+                                    LineMarker="{Binding LineMarker}"
+                                    >
                                 </foo:FooTextBox>
                                 <StackPanel Grid.Row="1" Orientation="Horizontal">
                                     <TextBlock Text="{Binding CaretPostion,ElementName=Textbox,Converter={StaticResource TextPointConverter}}" Margin="0,0,10,0"/>
                                     <TextBlock Text="{Binding MagnificationPower,ElementName=Textbox,Converter={StaticResource RateConverter}}" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding Encode.WebName}" Margin="0,0,10,0"/>
-                                    <TextBlock Text="{Binding LineFeed}" Margin="0,0,10,0"/>
+                                    <TextBlock Text="{Binding DocumentModel.Encode.WebName}" Margin="0,0,10,0"/>
+                                    <TextBlock Text="{Binding DocumentModel.LineFeed}" Margin="0,0,10,0"/>
                                     <TextBlock Text="{Binding DataContext.StatusMessage,ElementName=MainWindow}"/>
                                 </StackPanel>
                             </Grid>

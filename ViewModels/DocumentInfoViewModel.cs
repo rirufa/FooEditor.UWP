@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using FooEditEngine;
@@ -7,70 +8,12 @@ using FooEditor.UWP.Models;
 using Prism.Windows.Mvvm;
 using UI = Windows.UI;
 using Windows.UI.Xaml.Media;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace FooEditor.UWP.ViewModels
 {
     public class DocumentInfoViewModel : ViewModelBase, IXmlSerializable
     {
-        public String Title
-        {
-            get
-            {
-                return this.DocumentModel.Title;
-            }
-            set
-            {
-                this.DocumentModel.Title = value;
-                this.RaisePropertyChanged();
-            }
-        }
-
-        public System.Text.Encoding Encode
-        {
-            get
-            {
-                return this.DocumentModel.Encode;
-            }
-            set
-            {
-                this.DocumentModel.Encode = value;
-                this.RaisePropertyChanged();
-            }
-        }
-
-        public EncodeDetect.LineFeedType LineFeed
-        {
-            get
-            {
-                return this.DocumentModel.LineFeed;
-            }
-            set
-            {
-                this.DocumentModel.LineFeed = value;
-                this.RaisePropertyChanged();
-            }
-        }
-
-        public bool Dirty
-        {
-            get
-            {
-                return this.DocumentModel.IsDirty;
-            }
-        }
-
-        public String FilePath
-        {
-            get
-            {
-                return this.DocumentModel.CurrentFilePath;
-            }
-            set
-            {
-                this.DocumentModel.CurrentFilePath = value;
-                this.RaisePropertyChanged();
-            }
-        }
 
         public FooEditEngine.TextPoint CaretPostion
         {
@@ -90,73 +33,19 @@ namespace FooEditor.UWP.ViewModels
             set
             {
                 this._model = value;
-                this.RaisePropertyChanged();
+                this.OnPropertyChanged();
             }
         }
 
-        double _fontSize = AppSettings.Current.FontSize;
-        public double FontSize
+        public AppSettings Settings
         {
             get
             {
-                return this._fontSize;
-            }
-            set
-            {
-                this._fontSize = value;
-                this.RaisePropertyChanged();
+                return AppSettings.Current;
             }
         }
 
-        FontFamily _FontFamily = new FontFamily(AppSettings.Current.FontFamily);
-        public FontFamily FontFamily
-        {
-            get
-            {
-                return this._FontFamily;
-            }
-            set
-            {
-                this._FontFamily = value;
-                this.RaisePropertyChanged();
-            }
-        }
-
-        public bool IsProgressNow
-        {
-            get
-            {
-                return this.DocumentModel.IsProgressNow;
-            }
-        }
-
-        IHilighter _Hilighter;
-        public IHilighter Hilighter
-        {
-            get
-            {
-                return this._Hilighter;
-            }
-            set
-            {
-                SetProperty(ref this._Hilighter, value);
-            }
-        }
-
-        IFoldingStrategy _FoldingStrategy;
-        public IFoldingStrategy FoldingStrategy
-        {
-            get
-            {
-                return this._FoldingStrategy;
-            }
-            set
-            {
-                SetProperty(ref this._FoldingStrategy, value);
-            }
-        }
-
-        Brush _Foreground = new SolidColorBrush(UI.Colors.Black);
+        Brush _Foreground = new SolidColorBrush(AppSettings.Current.ForegroundColor);
         public Brush Foreground
         {
             get
@@ -169,7 +58,7 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        Brush _URL = new SolidColorBrush(UI.Colors.Blue);
+        Brush _URL = new SolidColorBrush(AppSettings.Current.URLColor);
         public Brush URL
         {
             get
@@ -182,7 +71,7 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        Brush _Comment = new SolidColorBrush(UI.Colors.Green);
+        Brush _Comment = new SolidColorBrush(AppSettings.Current.CommentColor);
         public Brush Comment
         {
             get
@@ -195,7 +84,7 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        Brush _Keyword1 = new SolidColorBrush(UI.Colors.Blue);
+        Brush _Keyword1 = new SolidColorBrush(AppSettings.Current.KeywordColor);
         public Brush Keyword1
         {
             get
@@ -208,7 +97,7 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        Brush _Keyword2 = new SolidColorBrush(UI.Colors.DarkCyan);
+        Brush _Keyword2 = new SolidColorBrush(AppSettings.Current.Keyword2Color);
         public Brush Keyword2
         {
             get
@@ -221,7 +110,7 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
-        Brush _Literal = new SolidColorBrush(UI.Colors.Brown);
+        Brush _Literal = new SolidColorBrush(AppSettings.Current.LiteralColor);
         public Brush Literal
         {
             get
@@ -234,31 +123,85 @@ namespace FooEditor.UWP.ViewModels
             }
         }
 
+        Brush _ControlChar = new SolidColorBrush(AppSettings.Current.ControlCharColor);
+        public Brush ControlChar
+        {
+            get
+            {
+                return _ControlChar;
+            }
+            set
+            {
+                SetProperty(ref _ControlChar, value);
+            }
+        }
+
+        Brush _UpdateArea = new SolidColorBrush(AppSettings.Current.UpdateAreaColor);
+        public Brush UpdateArea
+        {
+            get
+            {
+                return _UpdateArea;
+            }
+            set
+            {
+                SetProperty(ref _UpdateArea, value);
+            }
+        }
+
+        Brush _LineMarker = new SolidColorBrush(AppSettings.Current.LineMarkerColor);
+        public Brush LineMarker
+        {
+            get
+            {
+                return _LineMarker;
+            }
+            set
+            {
+                SetProperty(ref _LineMarker, value);
+            }
+        }
+
         public DocumentInfoViewModel()
         {
             this._model = new DocumentModel();
-            this._model.PropertyChanged += _model_PropertyChanged;
+            WeakReferenceMessenger.Default.Register<PropertyChangedEventArgs>(this, (s, e) => {
+                switch(e.PropertyName)
+                {
+                    case "ForegroundColor":
+                        this.Foreground = new SolidColorBrush(AppSettings.Current.ForegroundColor);
+                        break;
+                    case "KeywordColor":
+                        this.Keyword1 = new SolidColorBrush(AppSettings.Current.KeywordColor);
+                        break;
+                    case "Keyword2Color":
+                        this.Keyword2 = new SolidColorBrush(AppSettings.Current.Keyword2Color);
+                        break;
+                    case "URLColor":
+                        this.URL = new SolidColorBrush(AppSettings.Current.URLColor);
+                        break;
+                    case "ControlCharColor":
+                        this.ControlChar = new SolidColorBrush(AppSettings.Current.ControlCharColor);
+                        break;
+                    case "CommentColor":
+                        this.Comment = new SolidColorBrush(AppSettings.Current.CommentColor);
+                        break;
+                    case "LiteralColor":
+                        this.Literal = new SolidColorBrush(AppSettings.Current.LiteralColor);
+                        break;
+                    case "UpdateAreaColor":
+                        this.UpdateArea = new SolidColorBrush(AppSettings.Current.UpdateAreaColor);
+                        break;
+                    case "LineMarkerColor":
+                        this.LineMarker = new SolidColorBrush(AppSettings.Current.LineMarkerColor);
+                        break;
+                }
+            });
             this._model.DocumentTypeChanged += _model_DocumentTypeChanged;
             AppSettings.Current.ChangedSetting += (s, e) =>
             {
                 this.ApplyCurrentSetting();
             };
-        }
-
-        private void _model_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            switch(e.PropertyName)
-            {
-                case "CurrentFilePath":
-                    this.RaisePropertyChanged("FilePath");
-                    break;
-                case "IsDirty":
-                    this.RaisePropertyChanged("Dirty");
-                    break;
-                default:
-                    this.RaisePropertyChanged(e.PropertyName);
-                    break;
-            }
         }
 
         private void _model_DocumentTypeChanged(object sender, DocumentTypeEventArg e)
@@ -268,24 +211,22 @@ namespace FooEditor.UWP.ViewModels
 
             if (e.hilighter == null)
             {
-                this.Hilighter = null;
                 this._model.Document.LayoutLines.ClearHilight();
             }
             else
             {
-                this.Hilighter = e.hilighter;
+                this._model.Hilighter = e.hilighter;
                 this._model.Document.LayoutLines.HilightAll();
             }
 
             if (e.folding == null)
             {
-                this.FoldingStrategy = null;
                 this._model.Document.LayoutLines.ClearFolding();
             }
             else
             {
-                this.FoldingStrategy = e.folding;
                 this._model.Document.LayoutLines.ClearFolding();
+                this._model.FoldingStrategy = e.folding;
                 this._model.Document.LayoutLines.GenerateFolding();
             }
             this._model.Document.RequestRedraw();
@@ -293,42 +234,38 @@ namespace FooEditor.UWP.ViewModels
 
         public DocumentInfoViewModel(string title) : this()
         {
-            this.Title = title;
+            this.DocumentModel.Title = title;
         }
 
         public void ApplyCurrentSetting()
         {
             this._model.ApplyCurrentSetting();
-            if(this.FontSize != AppSettings.Current.FontSize)
-                this.FontSize = AppSettings.Current.FontSize;
-            if(this.FontFamily == null || this.FontFamily.Source != AppSettings.Current.FontFamily)
-                this.FontFamily = new FontFamily(AppSettings.Current.FontFamily);
         }
 
         public void OnActivate()
         {
-            this.RaisePropertyChanged("Encode");
-            this.RaisePropertyChanged("LineFeed");
+            this.OnPropertyChanged("Encode");
+            this.OnPropertyChanged("LineFeed");
         }
 
         public DocumentSource CreatePrintDocument()
         {
-            var source = new DocumentSource(this.DocumentModel.Document, new FooEditEngine.Padding(20, 20, 20, 20), this.FontFamily.Source, this.FontSize);
+            var source = new DocumentSource(this.DocumentModel.Document, new FooEditEngine.Padding(20, 20, 20, 20), AppSettings.Current.FontFamily, AppSettings.Current.FontSize);
             source.ParseHF = (s, e) => { return e.Original; };
             source.Header = AppSettings.Current.Header;
             source.Fotter = AppSettings.Current.Footer;
-            source.Forground = ((SolidColorBrush)this.Foreground).Color;
-            source.Keyword1 = ((SolidColorBrush)this.Keyword1).Color;
-            source.Keyword2 = ((SolidColorBrush)this.Keyword2).Color;
-            source.Literal = ((SolidColorBrush)this.Literal).Color;
-            source.Comment = ((SolidColorBrush)this.Comment).Color;
-            source.Url = ((SolidColorBrush)this.URL).Color;
+            source.Forground = AppSettings.Current.ForegroundColor;
+            source.Keyword1 = AppSettings.Current.KeywordColor;
+            source.Keyword2 = AppSettings.Current.KeywordColor;
+            source.Literal = AppSettings.Current.LiteralColor;
+            source.Comment = AppSettings.Current.CommentColor;
+            source.Url = AppSettings.Current.URLColor;
             source.LineBreak = this.DocumentModel.Document.LineBreak;
             if (source.LineBreak == LineBreakMethod.None)
                 source.LineBreak = LineBreakMethod.PageBound;
             source.LineBreakCount = this.DocumentModel.Document.LineBreakCharCount;
             source.ParseHF = (s, e) => {
-                PrintInfomation info = new PrintInfomation() { Title = this.Title, PageNumber = e.PageNumber };
+                PrintInfomation info = new PrintInfomation() { Title = this.DocumentModel.Title, PageNumber = e.PageNumber };
                 return EditorHelper.ParseHF(e.Original, info);
             };
 
@@ -337,15 +274,15 @@ namespace FooEditor.UWP.ViewModels
 
         public async Task ReloadFileAsync(System.Text.Encoding enc)
         {
-            if (this.FilePath == null)
+            if (this.DocumentModel.CurrentFilePath == null)
             {
                 throw new InvalidOperationException("ファイルを読み込んだ状態で実行する必要があります");
             }
-            var file = await FileModel.GetFileModel(FileModelBuildType.AbsolutePath, this.FilePath);
+            var file = await FileModel.GetFileModel(FileModelBuildType.AbsolutePath, this.DocumentModel.CurrentFilePath);
             this.DocumentModel.Document.Clear();
             await this.DocumentModel.LoadFile(file, enc);
             //エンコードが読み込み後に変わる
-            this.RaisePropertyChanged("Encode");
+            this.OnPropertyChanged("Encode");
         }
 
         public System.Xml.Schema.XmlSchema GetSchema()
